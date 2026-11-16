@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "capture_date": "2026-11-16",
+  "simulator": "Isaac Sim 4.2.0",
+  "source_code_commit": "f54927b45c7a214aec09616bf25a6270905cbf56",
+  "navigation_model": {
+    "selected_epoch": 484,
+    "torchscript_sha256": "31ded9f200a9538d1358cd7e331c001dbd746d97263a532793f0e633f5f48119"
+  },
+  "navigation_camera": {
+    "height_agl_m": 40,
+    "square_fov_deg": 30,
+    "raw_resolution_wh": [
+      1024,
+      1024
+    ]
+  },
+  "demo_result": {
+    "sigma": 0.1,
+    "outbound_length_m": 1980.7166296389341,
+    "pi_length_m": 1137.8503987597892,
+    "handoff_distance_m": 9.16487772173908,
+    "visual_steps": 11,
+    "true_distance_m": 1.809488373639185,
+    "homing_outcome": "SUCCESS"
+  },
+  "demonstration_scope": "Single interactive flight, distinct from aggregate benchmark results.",
+  "overview_render": {
+    "source_scene": "maps/downward_real_h40_v1/real_scene.usda",
+    "source_scene_sha256": "ae5ae334c7bea7d7a08fb30a00c3f012baa5555c81f32efcb62087d1590a23c8",
+    "purpose": "Independent oblique observer camera, not the navigation sensor",
+    "camera_eye_m": [
+      110,
+      -140,
+      150
+    ],
+    "camera_target_m": [
+      0,
+      0,
+      0
+    ],
+    "presentation_ground_span_m": 7000,
+    "focal_length": 32,
+    "aperture_wh": [
+      36,
+      22.5
+    ],
+    "resolution_wh": [
+      1536,
+      960
+    ],
+    "frame_updates": 24,
+    "final_frame_mae": 0.2037459762008102,
+    "black_fraction": 3.729926215277778e-05,
+    "image_sha256": "31ea43413670af3e76b144aaaa24e7a4867d04a58998a3d716480f2196152499"
+  },
+  "image_sources": {
+    "scene_overview.png": "Isaac Sim RGB render from an independent oblique observer camera; same 7 km presentation ground as the interactive demo.",
+    "demo_multiview.png": "X11 capture of the actual Isaac application region, 1280x800 pixels, during visual homing.",
+    "homing_results.png": "Automatic plot exported after both homing stages and landing of the same flight."
+  },
+  "image_files": {
+    "demo_multiview.png": {
+      "bytes": 916716,
+      "sha256": "f4793a835243b69a7855f32e73b91e1964fc69e8b24ef15e10a5d7b48f5b317b"
+    },
+    "homing_results.png": {
+      "bytes": 179391,
+      "sha256": "a8cdbae87740a88664b02503295a80aee79bb3925b507df31e824c5241a67b67"
+    },
+    "scene_overview.png": {
+      "bytes": 2120890,
+      "sha256": "31ea43413670af3e76b144aaaa24e7a4867d04a58998a3d716480f2196152499"
+    }
+  }
+}
