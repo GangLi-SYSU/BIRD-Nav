@@ -6,6 +6,13 @@ BIRD-Nav 基于 [TU Delft Bee-Nav](https://github.com/tudelft/Bee-Nav)，增加�
 
 ## 实验室复现与大文件获取
 
+克隆代码后进入仓库目录：
+
+```bash
+git clone https://github.com/GangLi-SYSU/BIRD-Nav.git
+cd BIRD-Nav
+```
+
 完整安装、素材下载、校验、场景重建和训练命令见
 [复现资源与操作指南](docs/REPRODUCTION_RESOURCES.md)。
 [大文件清单](docs/GITHUB_LARGE_FILES.md)记录了本机历史资源的体积。

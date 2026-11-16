@@ -1,6 +1,6 @@
 # GitHub 发布前大文件盘点
 
-目标：`GangLi-SYSU/BIRD-Nav`，公有仓库；用途为重新训练与复现实验。仓库尚未创建。
+代码仓库：[GangLi-SYSU/BIRD-Nav](https://github.com/GangLi-SYSU/BIRD-Nav)，公有；用途为重新训练与复现实验。
 扫描日期：2026-11-16。本次仅盘点，没有上传、迁移或删除任何文件。
 
 扫描到 113,491 个文件；单文件 ≥50 MiB 共 18 个，其中 5 个超过 100 MiB。
