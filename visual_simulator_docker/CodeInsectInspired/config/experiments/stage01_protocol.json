@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "stage": "A_freeze_baseline_and_protocol",
+  "baseline_kind": "current_repository_code_not_exact_paper_reproduction",
+  "legacy_reference": {
+    "entrypoint": {
+      "mode": "variant",
+      "all_environments": ["urban", "warehouse", "park", "greenhouse", "courtyard"],
+      "seed_number": 10,
+      "train_models": true
+    },
+    "sampling": {
+      "shape_flight": "bee",
+      "shape_params": [5, 150, 0.35],
+      "n_positions": 1000,
+      "use_noisy_spiral": false,
+      "only_point_north": false,
+      "home_position": [0.0, 0.0, 1.5],
+      "number_cameras": 4,
+      "projection": "fisheyeSpherical",
+      "raw_resolution_wh": [1024, 1024],
+      "crop": true,
+      "crop_box_params": [0, 312, 1024, 712]
+    },
+    "training": {
+      "model_type": "attention",
+      "criterion": "MSELoss",
+      "optimizer": "AdamW",
+      "learning_rate": 0.0005,
+      "batch_size": 8,
+      "batch_size_val": 8,
+      "batch_size_eval": 8,
+      "epochs": 150,
+      "split_ratio": 0.95,
+      "augment": true,
+      "num_workers": 4
+    },
+    "evaluation": {
+      "virtual_home_point": [0.0, 0.0, 1.5],
+      "start_location_pattern": "circle",
+      "circle_params": {
+        "radius_scales": [0.5, 1.0, 1.5, 2.0, 2.5],
+        "radius": 10,
+        "num_points": 16
+      },
+      "count_limit": 50,
+      "threshold_m": 1.2,
+      "configured_step_size_m": 0.5,
+      "effective_step_expression": "0.1 + 0.4 * (np.linalg.norm(np.asarray(prediction)) / 3.0)",
+      "max_step_m": 2.5,
+      "pitch_roll": 0,
+      "north": false,
+      "fixed_yaw": false,
+      "projection": "fisheyeSpherical"
+    }
+  },
+  "network_contract": {
+    "class": "IncepAttentionCNN_rgb",
+    "trainable_parameters": 10820,
+    "internal_resolution_hw": [192, 1800],
+    "output_dimensions": 2,
+    "output_frame": "body_xy",
+    "output_units": "m",
+    "architecture_changes_allowed": false,
+    "retrain_downward_weights_from_scratch": true
+  },
+  "target_experiment": {
+    "execution_ready": false,
+    "reason": "Camera, scene, dataset and closed-loop adapters belong to later stages.",
+    "camera_height_agl_m": 10.0,
+    "height_reference": "camera_optical_center_above_flat_ground",
+    "physical_home_xyz_m": [0.0, 0.0, 0.0],
+    "camera_mount_offset_from_vehicle_m": null,
+    "projection": "perspective_pinhole",
+    "optical_axis": "vertical_down",
+    "hfov_deg": 30.0,
+    "fov_interpretation_confirmed_by_user": false,
+    "fov_interpretation_note": "Provisional horizontal FOV; confirm before formal capture.",
+    "raw_resolution_wh": [1024, 1024],
+    "pixel_aspect_ratio": 1.0,
+    "sensor_shape_confirmed_by_user": false,
+    "initial_roll_pitch_deg": [0.0, 0.0],
+    "yaw_policy": "variable_not_north_locked",
+    "inherit_training_and_control_from": "legacy_reference",
+    "outbound_max_radius_m": null,
+    "outbound_path_length_m": null
+  },
+  "change_policy": {
+    "required_adaptations": [
+      "Match training and inference camera projection, pose and intrinsics.",
+      "Unify flight height and retain height when adjusting XY positions.",
+      "Remove panorama crop and horizontal wrap from the downward mode.",
+      "Repair frame-label alignment and dropped trailing samples.",
+      "Validate body-camera-world transforms and deterministic held-out evaluation."
+    ],
+    "controlled_extensions": [
+      "Additional headings or denser learning-flight positions.",
+      "Different learning radius, step cap or maximum step count.",
+      "Other heights, FOVs, lighting or attitude perturbations.",
+      "Different optimizer, input geometry, architecture or temporal memory."
+    ],
+    "paper_differences": [
+      "Paper specifies Adam; current visual simulation code uses AdamW.",
+      "Current entry disables learning-path noise.",
+      "Legacy split subtracts validation from the initial training allocation.",
+      "Current entry uses five variant scenes rather than ten forest scenes."
+    ]
+  },
+  "validation_plan": {
+    "panorama_smoke": {
+      "scene": "maps/env_urban.usd",
+      "poses_xy_yaw_deg": [[3.0, 0.0, 0.0], [3.0, 0.0, 90.0], [0.0, 3.0, 0.0]],
+      "headless": true,
+      "training_steps": 0,
+      "purpose": "Check original panorama rendering, preprocessing, labels and untrained network forward only."
+    },
+    "formal_paired_comparison": {
+      "status": "pending_later_scene_and_camera_stages",
+      "requirements": "Same scene, learning positions, evaluation starts and declared image/update budgets."
+    }
+  }
+}

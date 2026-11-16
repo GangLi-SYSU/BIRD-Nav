@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "purpose": "fresh_spiral_only_h40_fov30_training_and_r10_r20_navigation",
+  "authorization": "User requested40m altitude,30deg FOV,2m navigation success radius,testing only10m and20m. Previous constraint: training acquisition must follow the original spiral trajectory; no dense near-home or2D coverage supplement.",
+  "seed": 10,
+  "scene": "maps/downward_real_h40_v1/real_scene.usda",
+  "height_agl_m": 40.0,
+  "camera": {
+    "mode": "downward_pinhole",
+    "raw_resolution_wh": [1024, 1024],
+    "hfov_deg": 30.0,
+    "fov_definition_confirmed": true,
+    "crop_box": null
+  },
+  "learning": {
+    "generator": "generate_bee_path",
+    "shape_params": [5, 150, 1.4],
+    "position_count": 147,
+    "headings_per_position": 8,
+    "split_ratio": 0.95,
+    "split_generator": "isolated CPU torch.randperm seeded10; group all8 headings together",
+    "collection_constraint": "Only the original bee spiral positions; no off-trajectory samples,near-home supplements or old images",
+    "learning_radius_m": 43.982297150257104
+  },
+  "training": {
+    "seed": 10,
+    "network_variant": "nadir384x384",
+    "model_parameters": 10628,
+    "scale_m": 44.0,
+    "learning_rate": 0.0005,
+    "optimizer_kwargs": {"betas": [0.9, 0.999], "eps": 1e-8, "weight_decay": 0.01, "amsgrad": false},
+    "batch_size": 8,
+    "epochs": 600,
+    "num_workers": 4,
+    "torch_num_threads": 2,
+    "validation_interval_updates": 0,
+    "minimum_host_available_bytes": 1073741824
+  },
+  "preprocessing": {
+    "input_size": 384,
+    "mask_radius_px": 190.0,
+    "mask_center_xy_px": [191.5, 191.5],
+    "mask_fill_rgb_float": [0.0, 0.0, 0.0],
+    "resize": "bilinear,align_corners=False; full frame,no crop",
+    "rotation": "Train only: online uniform[0,360) image rotation with coupled body-vector labels; fixed mask follows rotation",
+    "evaluation": "Same fixed circle inside exported model; no random rotation"
+  },
+  "initialization": "Fresh seeded Xavier initialization; no previous model weights or optimizer state,including epoch600 or near-data models",
+  "selection": "Complete600 epochs,select the lowest full-validation physical component MSE with earlier epoch breaking ties; freeze deployment before navigation. Preserve final600 separately. No selection using navigation or test images.",
+  "navigation": {
+    "scene": "maps/downward_real_h40_v1/real_scene.usda",
+    "home_camera_xyz_m": [0.0, 0.0, 40.0],
+    "ground_z_m": 0.0,
+    "controller": {"success_radius_m": 2.0, "max_steps": 50, "step_offset_m": 0.1, "step_gain": 0.13333333333333333, "max_step_m": 2.5, "minimum_prediction_norm_m": 0.000001, "fixed_yaw": false},
+    "formal": {"radii_m": [10, 20], "bearings_per_radius": 16, "initial_yaws_deg": [0, 90, 180, 270]},
+    "rendered_oracle": {"radii_m": [10, 20], "bearings_per_radius": 4, "initial_yaws_deg": [45]},
+    "runtime": {"headless": true, "camera_count": 4, "model_device": "cpu", "torch_num_threads": 2, "seed": 10, "safety_margin_m": 5.0},
+    "success_definition": "Terminate at an executed action endpoint with simulator-truth horizontal distance<=2m; otherwise fail after50 actions. Seeing home in the image is not the success criterion. Initial success and segment crossing are reported separately.",
+    "supervision": "Formal model decisions use RGB and current yaw only. Ground truth scores arrival and checks scene bounds. The rendered oracle is a separately labelled engineering check,not a neural result."
+  },
+  "limits": "Single scene and seed,147 spiral positions only,overlapping views and small6-position validation set. FOV,data source and success threshold differ from old tests; raw success percentages are not an isolated FOV comparison. Kinematic navigation,no flight dynamics or deployable autonomous home detector. Held-out spiral test images are not evaluated in this run."
+}

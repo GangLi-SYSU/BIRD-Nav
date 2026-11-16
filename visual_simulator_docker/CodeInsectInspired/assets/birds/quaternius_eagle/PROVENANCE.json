@@ -1,0 +1,20 @@
+{
+  "author": "Quaternius",
+  "license": "CC0-1.0",
+  "author_page": "https://opengameart.org/content/animated-animales-low-poly",
+  "download": "https://hydecogames.com/art/models/data/packs/quaternius-animated-animals-vol2.zip",
+  "archive_sha256": "ea111fbf21c2b0130a45af0152841991e3f365a8e78fcd0ff7bca8dea275ce9e",
+  "changes": "FBX converted to USD in Isaac Sim 4.2; natural eagle palette; idle/flying pose interpolation plus procedural shoulder flap on the authored skeleton; normalized and aligned for demo only.",
+  "files": {
+    "Eagle.blend": "ca9d09c805d51d0df063bd25ebe3f85bc67b4e2ecc2fef174aa72f29b85e9e93",
+    "Eagle.fbx": "c3504c8e0904eab7b14e695609a861417f089cf724b94bda821ea4a3bbc6f505",
+    "Eagle.obj": "4bcc34c207399fce40fe294e4cee29e790233a3674881fda8736277b6a4fe645",
+    "eagle.usd": "212721b3ecbddfbe49591ae55361068b5826fcffe23a4dc41966d2461666029f",
+    "EZ-CC0-LICENSE.txt": "336fd9c23b089884591d46fb5e38c18e03e68597dd4914ad944005df6e338e46",
+    "inspection.txt": "695ea611c71de1a4f8e3340083ef3b0a5574f94ce1953cc6bdd5f1d084a802c4",
+    "animations/Eagle_eaglearmature_flying_anim.usd": "5744026d4ac86cc29966b09df16ecf7e622f0fd4d2c81eba1ddfe2eb098bdfa4",
+    "animations/Eagle_eaglearmature_idle_anim.usd": "e16593b27d84814cfe83907a878c4116518d00136ccb50e73adbf2f6d1a92ef1",
+    "animations/Eagle_eagle_idle_anim.usd": "b9ba2d20dd91d481cd511038e64d6749d40f76bd2d0989cc0b1777d7d02ce4f8",
+    "props/Eagle_props.usd": "642b229e108624548d228eb1291eb4080f2982fa892556ecf9472df05e756151"
+  }
+}

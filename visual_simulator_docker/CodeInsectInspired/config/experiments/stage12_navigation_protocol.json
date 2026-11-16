@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "purpose": "closed_loop_navigation_evaluation",
+  "authorization": "User requested navigation tests with0.5m success radius and approved small-scale debugging followed by320 formal tests.",
+  "training_run": "runs/stage11_coverage_02",
+  "model_selection": "Use the normalized arm selected by validation before Stage11 test inference; never choose weights or tune the controller on navigation outcomes.",
+  "scene": "maps/downward_real_h40_v1/real_scene.usda",
+  "home_camera_xyz_m": [0.0, 0.0, 40.0],
+  "ground_z_m": 0.0,
+  "camera": {"mode": "downward_pinhole", "raw_resolution_wh": [1024, 1024], "hfov_deg": 70.0, "fov_definition_confirmed": true, "crop_box": null},
+  "controller": {"success_radius_m": 0.5, "max_steps": 50, "step_offset_m": 0.1, "step_gain": 0.13333333333333333, "max_step_m": 2.5, "minimum_prediction_norm_m": 0.000001, "fixed_yaw": false},
+  "success_definition": "After each executed position update, check simulator-ground-truth horizontal distance<=0.5m and end the episode immediately. Endpoint checks match the original code; crossing a circle between endpoints is logged separately, not counted as success. Initial-inside cases are excluded from nontrivial success rates.",
+  "pilot": {"radii_m": [2, 3, 5], "bearings_per_radius": 4, "initial_yaws_deg": [0, 90, 180, 270]},
+  "formal": {"radii_m": [5, 10, 20, 30, 40], "bearings_per_radius": 16, "initial_yaws_deg": [0, 90, 180, 270]},
+  "rendered_oracle": {"radii_m": [2, 5], "bearings_per_radius": 4, "initial_yaws_deg": [45]},
+  "runtime": {"headless": true, "camera_count": 4, "model_device": "cpu", "torch_num_threads": 2, "seed": 10, "safety_margin_m": 5.0},
+  "supervision": "Ground truth is used for evaluation, pose execution verification and boundary/clearance guards. Only engineering oracle runs use a true home vector for decisions. Network-policy input is full RGB/255 only; yaw is used solely for body/world conversion and action execution. No distance-to-home feedback, terminal step shortening, APF, or pose input is added to the neural policy.",
+  "scope": "Original-style discrete kinematic camera/robot-proxy navigation at40m AGL. No quadrotor dynamics, braking/hover validation, autonomous home recognition or landing. All scene surfaces are below the flight plane; no obstacle-avoidance capability is claimed.",
+  "recording": "Save every decision RGB, frame/pose/optics/stability receipt, body/world prediction, planned/executed displacement, pre/post distance, termination reason and episode summary. Interrupted episodes restart from their fixed initial state in a new preserved attempt; committed completed episodes are verified and reused."
+}

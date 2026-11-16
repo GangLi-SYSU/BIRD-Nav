@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "confirmation": "User: 全部采用推荐",
+  "contract": {
+    "optical_model": "ideal_pinhole_no_distortion",
+    "mount": "body_fixed_nadir",
+    "body_axes": "X forward, Y left, Z up; positive yaw from world X toward world Y",
+    "image_axes": "right = body -Y; up = body +X; optical axis = body -Z",
+    "height_reference": "camera optical center above flat ground",
+    "mount_offset_body_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "roll_pitch_deg": [
+      0.0,
+      0.0
+    ]
+  },
+  "camera": {
+    "hfov_deg": 30.0,
+    "raw_resolution_wh": [
+      1024,
+      1024
+    ],
+    "fov_definition_confirmed": true
+  },
+  "camera_height_agl_m": 10.0,
+  "reference": "flat ground; no terrain/landmark following",
+  "network": "original 10820-parameter attention model including its 192x1800 internal resize",
+  "scope": "camera calibration only; full sampling and closed-loop gates remain stages E/F/H",
+  "image_acquisition": {
+    "rgb_mae_limit": 0.5,
+    "consecutive_changes": 2,
+    "max_render_updates": 90,
+    "render_subframes": 2
+  },
+  "image_acquisition_confirmation": "User: 1. 加入稳定检查，继续完成真实场景验收",
+  "rgb_pair_mae_acceptance_limit": 2.0
+}

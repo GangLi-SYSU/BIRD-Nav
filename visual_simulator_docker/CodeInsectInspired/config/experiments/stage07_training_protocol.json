@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "authorization": "User requested the next stage G; original network and training settings retained",
+  "data": "verified stage F position groups: 1064 train,48 validation,64 test;8 real headings;no augmentation",
+  "training": {
+    "seed": 10,
+    "model_type": "attention",
+    "model_parameters": 10820,
+    "initialization": "original Xavier initialization; fresh for each engineering/formal run",
+    "criterion": "MSELoss",
+    "optimizer": "AdamW",
+    "learning_rate": 0.0005,
+    "optimizer_kwargs": {"betas": [0.9,0.999],"eps": 1e-8,"weight_decay": 0.01,"amsgrad": false},
+    "batch_size": 8,
+    "epochs": 150,
+    "num_workers": 4,
+    "torch_num_threads": 2,
+    "precision": "float32; original cuDNN/TF32 defaults recorded",
+    "mixed_precision": false,
+    "gradient_clipping": null,
+    "learning_rate_schedule": null,
+    "early_stopping": false,
+    "validation_interval_updates": 25,
+    "validation_at_epoch_end": true,
+    "model_selection": "last epoch150; test set never used to choose weights"
+  },
+  "engineering": {
+    "probe_workers": [0,2,4],
+    "probe_positions": 8,
+    "smoke_positions": 4,
+    "smoke_epochs": 3,
+    "reuse_smoke_weights_for_formal": false,
+    "minimum_host_available_bytes": 1073741824
+  },
+  "checkpoint": "immutable epoch checkpoint plus atomic latest pointer; optimizer,history,Python/NumPy/torch/CUDA RNG and loader generator states",
+  "delivery": {"pytorch": "last-epoch state_dict","onnx_opset": 17,"onnx_dynamic_batch": true,"onnx_reference_atol": 1e-5,"onnx_reference_rtol": 1e-4},
+  "scope": "offline training and regression metrics only; no closed-loop homing or spatial generalization claim"
+}

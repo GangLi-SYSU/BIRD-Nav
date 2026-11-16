@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "authorization": "User requested stepwise improvements using recommended settings, explicitly allowing this run to proceed without further questions.",
+  "source_probe_run": "runs/stage18_local_cross13_01",
+  "source_probe_fingerprint": "601c0f82268aefa713d26b8c2e40906a8bc377227bbe4b35b313d2e5defb55e6",
+  "source_dataset_run": "runs/stage11_coverage_02",
+  "source_dataset_sha256": "d2ddad22c42277cda244f8ea331fd9fde50771ef36500cac876dcb6395db1868",
+  "seed": 20261102,
+  "headings_deg": [0,45,90,135,180,225,270,315],
+  "train_counts_by_band": [33,80,80],
+  "validation_counts_by_band": [4,4,8],
+  "reserved_counts_by_band": [4,6,8],
+  "band_edges_m": [0,0.5,2,5],
+  "inner_holdout_radius_min_m": 0.35,
+  "new_train_min_spacing_m": 0.08,
+  "new_holdout_separation_m": 0.15,
+  "old_holdout_train_separation_m": 1.0,
+  "capture_reserved_test": false,
+  "limits": "New local validation is interpolation in the same scene, with0.15m center separation; it does not retain the old1m spatial generalization claim. Existing old held-out centers retain1m separation from new training centers. Keep all headings and augmentations of a position in one partition. Reserved18 test positions are declared geometrically but not captured or evaluated. The104 diagnostic images are not imported as training images; a new home training anchor is captured explicitly."
+}

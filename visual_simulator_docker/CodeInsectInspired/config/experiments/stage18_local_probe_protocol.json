@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "source_navigation_run": "runs/stage17_radius_5_10_01",
+  "source_fingerprint": "f0d5d10d07f12f96716c7ea853673d6f68b508cde409b60d9c3b170ad82e0654",
+  "selected_epoch": 589,
+  "allowed_designs": ["cross13", "grid81"],
+  "headings_deg": [0, 45, 90, 135, 180, 225, 270, 315],
+  "cross_radii_m": [0.5, 1.0, 2.0],
+  "grid_half_width_m": 2.0,
+  "grid_spacing_m": 0.5,
+  "purpose": "Fixed-position, multi-heading diagnosis before changing training data. No model, controller, scene, camera, augmentation or training change. No closed-loop navigation.",
+  "historical_replay": "runs/stage17_radius_5_10_01/analysis/bias_diagnosis_01/home_replay.json",
+  "limits": "Diagnostic observations for development; not an independent blind test and not automatically added to training. Angular error is undefined at the true home or for zero predictions. No training-data density, split policy, training budget or controller change is authorized by this plan."
+}

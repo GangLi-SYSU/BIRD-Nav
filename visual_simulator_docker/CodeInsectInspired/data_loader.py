@@ -97,6 +97,12 @@ class CustomDataset(Dataset):
 def make_loader(dataset, shuffle, batch_size):
     return DataLoader(dataset=dataset, batch_size=batch_size, shuffle=shuffle, num_workers=4)
 
+def make_configured_loader(dataset, shuffle, batch_size, config):
+    if 'num_workers' not in config:
+        return make_loader(dataset, shuffle, batch_size)
+    return DataLoader(dataset=dataset, batch_size=batch_size, shuffle=shuffle,
+                      num_workers=config['num_workers'])
+
 def get_data_loader(data_folder, image_folder, csv_filename):
     filenames, target_x, target_y, position_map, rotation_map, target_map, noisy_position_map, noisy_rotation_map, noisy_target_map =  \
         load_dataset_from_csv(os.path.join(data_folder, csv_filename))
@@ -157,6 +163,10 @@ def show_image_and_target(image, target, prediction = None):
 
 def inspect_dataset(config, n_examples = 10, load_indices = True, model = None):
 
+    if config.get('camera_mode') == 'downward_pinhole':
+        from insect_utils.downward_data import inspect_prepared
+        return inspect_prepared(config, n_examples, model)
+
     # Load the data set from the CSV file:
     filenames, target_x, target_y, position_map, rotation_map, target_map, noisy_position_map, noisy_rotation_map, noisy_target_map =  \
         load_dataset_from_csv(os.path.join(config["dataset_folder"], config['csv_filename']))
@@ -166,7 +176,7 @@ def inspect_dataset(config, n_examples = 10, load_indices = True, model = None):
     full_dataset = CustomDataset(image_folder=image_folder, image_names = filenames, target_x=target_x, target_y = target_y,  transform=transforms.ToTensor() \
                                  , augmentation=False)
     
-    indices_pkl_name = os.path.join(config["dataset_folder"], "indices.pkl")
+    indices_pkl_name = config.get('indices_file', os.path.join(config["dataset_folder"], "indices.pkl"))
     if load_indices and not os.path.exists(indices_pkl_name):
         load_indices = False
 
@@ -232,6 +242,9 @@ def inspect_dataset(config, n_examples = 10, load_indices = True, model = None):
         plt.show()
 
 def get_data_loaders(config, load_indices = False):
+    if config.get('camera_mode') == 'downward_pinhole':
+        from insect_utils.downward_data import get_prepared_loaders
+        return get_prepared_loaders(config)
     # Load the data set from the CSV file:
     filenames, target_x, target_y, position_map, rotation_map, target_map, noisy_position_map, noisy_rotation_map, noisy_target_map =  \
         load_dataset_from_csv(os.path.join(config["dataset_folder"], config['csv_filename']))
@@ -242,7 +255,7 @@ def get_data_loaders(config, load_indices = False):
                                  , augmentation=config["augment"])
 
     # check whether the pickle name exists:
-    indices_pkl_name = os.path.join(config["dataset_folder"], "indices.pkl")
+    indices_pkl_name = config.get('indices_file', os.path.join(config["dataset_folder"], "indices.pkl"))
     if load_indices and not os.path.exists(indices_pkl_name):
         load_indices = False
 
@@ -266,7 +279,7 @@ def get_data_loaders(config, load_indices = False):
         train_indices = indices[val_size:train_size]
 
         # pickle the indices to file:
-        with open(os.path.join(config["dataset_folder"], "indices.pkl"), "wb") as file:
+        with open(indices_pkl_name, "wb") as file:
             pickle.dump({"train_indices": train_indices, "val_indices": val_indices, "test_indices": test_indices}, file)
 
     # Create subsets using indices
@@ -274,8 +287,8 @@ def get_data_loaders(config, load_indices = False):
     val_dataset = torch.utils.data.Subset(full_dataset, val_indices)
     test_dataset = torch.utils.data.Subset(full_dataset, test_indices)
 
-    train_loader = make_loader(train_dataset, shuffle=True, batch_size=config["batch_size"])
-    val_loader = make_loader(val_dataset, shuffle=False, batch_size=config["batch_size_val"])
-    test_loader = make_loader(test_dataset, shuffle=False, batch_size=config["batch_size_eval"])
+    train_loader = make_configured_loader(train_dataset, shuffle=True, batch_size=config["batch_size"], config=config)
+    val_loader = make_configured_loader(val_dataset, shuffle=False, batch_size=config["batch_size_val"], config=config)
+    test_loader = make_configured_loader(test_dataset, shuffle=False, batch_size=config["batch_size_eval"], config=config)
     
     return train_loader, val_loader, test_loader, position_map, rotation_map, noisy_position_map, target_map, train_indices, val_indices, test_indices

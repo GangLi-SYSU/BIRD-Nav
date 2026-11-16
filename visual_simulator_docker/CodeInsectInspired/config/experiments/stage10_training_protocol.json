@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "authorization": "User requested training on the reviewed normal-scale real scene and selected approximately44 m learning radius,147 positions x8 headings,150 epochs.",
+  "data": "Fresh 40m AGL/HFOV70 real scene capture;147 positions along bee path[5,150,1.4];1064 train,48 validation,64 test images;position groups,no augmentation.",
+  "training": {
+    "seed": 10,
+    "model_type": "attention",
+    "model_parameters": 10628,
+    "initialization": "original Xavier initialization; fresh for each engineering/formal run",
+    "criterion": "MSELoss",
+    "optimizer": "AdamW",
+    "learning_rate": 0.0005,
+    "optimizer_kwargs": {
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0.01,
+      "amsgrad": false
+    },
+    "batch_size": 8,
+    "epochs": 150,
+    "num_workers": 4,
+    "torch_num_threads": 2,
+    "precision": "float32; original cuDNN/TF32 defaults recorded",
+    "mixed_precision": false,
+    "gradient_clipping": null,
+    "learning_rate_schedule": null,
+    "early_stopping": false,
+    "validation_interval_updates": 25,
+    "validation_at_epoch_end": true,
+    "model_selection": "last epoch150; test set never used to choose weights",
+    "network_variant": "nadir384x384"
+  },
+  "engineering": {
+    "probe_workers": [
+      0,
+      2,
+      4
+    ],
+    "probe_positions": 8,
+    "smoke_positions": 4,
+    "smoke_epochs": 3,
+    "reuse_smoke_weights_for_formal": false,
+    "minimum_host_available_bytes": 1073741824
+  },
+  "checkpoint": "immutable epoch checkpoint plus atomic latest pointer; optimizer,history,Python/NumPy/torch/CUDA RNG and loader generator states",
+  "delivery": {
+    "pytorch": "last-epoch state_dict",
+    "onnx_opset": 17,
+    "onnx_dynamic_batch": true,
+    "onnx_reference_atol": 1e-05,
+    "onnx_reference_rtol": 0.0001
+  },
+  "scope": "Combined scene,height,FOV,learning-range and actual renderer correction;within-learning-region grouped holdout only,no isolated causal attribution or closed-loop success claim."
+}

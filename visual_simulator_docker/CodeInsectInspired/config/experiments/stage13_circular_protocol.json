@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "source_run": "runs/stage11_coverage_02",
+  "source_fingerprint": "5805e6d15cb91d277ff240793663807cecf6a054a12d813214a9e86bd7a6aa16",
+  "arms": {"mask_only": false, "mask_rotation": true},
+  "training": {
+    "seed": 10,
+    "network_variant": "nadir384x384",
+    "model_parameters": 10628,
+    "scale_m": 44.0,
+    "learning_rate": 0.0005,
+    "optimizer_kwargs": {"betas": [0.9, 0.999], "eps": 1e-8, "weight_decay": 0.01, "amsgrad": false},
+    "batch_size": 8,
+    "epochs": 150,
+    "num_workers": 4,
+    "torch_num_threads": 2,
+    "validation_interval_updates": 0,
+    "minimum_host_available_bytes": 1073741824
+  },
+  "preprocessing": {
+    "input_size": 384,
+    "mask_radius_px": 190.0,
+    "mask_center_xy_px": [191.5, 191.5],
+    "mask_fill_rgb_float": [0.0, 0.0, 0.0],
+    "resize": "bilinear, align_corners=False; no crop or scale change after rotation",
+    "rotation": "online per training access, angle uniform [0,360) degrees, displayed-image CCW; target rotated by the same positive angle in body X-forward/Y-left axes",
+    "virtual_body_yaw": "original_yaw - image_rotation_angle",
+    "evaluation": "fixed circular mask; no random rotation; raw camera remains full 1024-square RGB at 40m/70deg",
+    "rng": "existing seeded worker/global NumPy RNG; checkpoint restores loader generators and Python/NumPy/Torch RNG"
+  },
+  "selection": "Best epoch per arm by full unchanged validation physical component MSE; freeze every requested arm before test inference. Same 76800 updates per formal arm. Fresh identical initialization, not fine-tuning.",
+  "limits": "Existing test sets have already informed development; any new scores on them are development comparisons, not a new blind test. Rotation creates no new position or near-home observation. This phase does not launch navigation or change the 0.5m/50-step baseline."
+}

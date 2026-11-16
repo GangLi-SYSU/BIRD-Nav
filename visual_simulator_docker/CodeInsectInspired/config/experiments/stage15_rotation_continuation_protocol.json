@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "purpose": "continue_the_rotation_arm_from150_to300_then_repeat64_homing_trials_at20m",
+  "authorization": "User explicitly requested continuing the augmentation arm to300 total epochs with data, learning rate, mask and controller unchanged, then the same64 trials at20m.",
+  "source_training_run": "runs/stage13_circular_01",
+  "source_arm": "mask_rotation",
+  "source_training_fingerprint": "cd1062740236ad4ce4f222bbd13c980fd6b977ad699ced50473b498775b63e21",
+  "source_arm_fingerprint": "1af27a010c55fbcb4ce268721ef846a67407281548086e65bc819d235878b6be",
+  "source_checkpoint_sha256": "fd8d2b477307b439f4226a3eb991acbc3c4806fac43abec568bec22c47f8496b",
+  "source_navigation_run": "runs/stage14_rotation_r20_01/arms/mask_rotation",
+  "source_epoch": 150,
+  "source_optimizer_steps": 76800,
+  "target_epochs": 300,
+  "target_optimizer_steps": 153600,
+  "selection": "Minimum full-validation physical component MSE over the unchanged complete1..300 epoch history; freeze selected weights before navigation. If150 remains best, retain it and explicitly report that selection. No navigation-based weight selection.",
+  "checkpoint_import": "Create a new-run checkpoint whose experiment fingerprint is rebound while preserving every other payload entry exactly: model, optimizer, RNG, loader generators, history and cumulative update counts. Preserve the source checkpoint bytes.",
+  "execution": "One container sequentially trains then starts Isaac navigation in a new process, releasing training GPU state first. Keep original dataset, scale44, resize-then-rotate augmentation, fixed circle, network, learning rate0.0005, optimizer settings, batch8, workers4 and original controller.",
+  "navigation": "Repeat the exact20m formal episode list:16 bearings x4 initial yaws=64. Same0.5m success radius,50 actions and dynamic step rule. No other radii, no additional static test-set evaluation.",
+  "limits": "This compares150 versus300 total epochs of the same augmentation method, with additional76800 updates; it is not an equal-compute comparison against the no-rotation arm. Same scene and training seed, correlated headings/footprints, stochastic rendering. Discrete kinematic pose navigation does not validate braking, hovering or autonomous home recognition."
+}

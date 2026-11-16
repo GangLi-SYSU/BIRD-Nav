@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "authorization": "User requested an additional15m test of the current compact20m spiral model.",
+  "source_navigation_run": "runs/stage23_compact_spiral_h40_fov30_01/navigation",
+  "source_navigation_fingerprint": "45282ab55cf1129ccb229f6a6664ecde2d499efebbabfece1a645a896e3f15c2",
+  "selected_epoch": 484,
+  "formal_radii_m": [15],
+  "formal_trials": 64,
+  "change": "Only formal and rendered-oracle starting radius changes to15m. Reuse identical selected weights,camera,scene,controller and starting bearing/yaw grids. No retraining or new learning data.",
+  "model_check": "Reuse and verify the existing8-image live/deployment consistency receipt for this identical model and camera pipeline; no new20m engineering captures.",
+  "limits": "Additional development test in the same scene. Compare15m to the historical10m/20m results without rerunning them. Same2m truth-based arrival rule,50-action limit and dynamic step size. No inference inside the2m stop region."
+}

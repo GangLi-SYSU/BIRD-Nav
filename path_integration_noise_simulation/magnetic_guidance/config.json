@@ -1,0 +1,13 @@
+{
+  "distances_m": [250, 500, 1000, 2000, 5000],
+  "distance_noise_m_per_sqrt_m": [0, 0.1, 0.25, 0.5, 1, 2],
+  "routes": ["straight", "dogleg"],
+  "trials": 50,
+  "trial_start": 0,
+  "seed": 20261106,
+  "delta_t_s": 0.5,
+  "outbound_speed_m_s": 2.5,
+  "return_speed_m_s": 4,
+  "gyro_noise_deg_per_sqrt_s": 0.63,
+  "success_radius_m": 15
+}

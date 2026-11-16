@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "confirmation": "User: 算了，现在就用八个航向吧。进行下一步",
+  "learning_path": {
+    "shape": "bee",
+    "parameters": [5, 150, 0.35],
+    "position_count": 147,
+    "seed": 10
+  },
+  "heading_coverage": {
+    "headings_per_position": 8,
+    "spacing_deg": 45.0,
+    "base_yaw": "RandomState(seed).rand(position_count)*720 modulo360",
+    "method": "physically render each requested yaw; no panorama wrap",
+    "sample_count": 1176,
+    "split_group": "all eight headings at one position share a position_id"
+  },
+  "height_reference": "camera optical center 10m above flat ground; no landmark-top following",
+  "camera_protocol": "stage04_camera_protocol.json",
+  "sample_count_policy": "exact",
+  "acceptance": {
+    "tail_probe": "5 real samples on 4 cameras, engineering fixture only",
+    "single_camera": "complete 1176 samples",
+    "four_cameras": "complete identical 1176 planned poses",
+    "merge_acceptance_runs": false,
+    "training_steps": 0
+  },
+  "optimization_budget": "8x the single-heading image count; epochs and network unchanged; actual optimizer steps recorded after stage F splits",
+  "remaining_gates": ["stage F grouped splitting and preprocessing", "stage H closed-loop controller"]
+}

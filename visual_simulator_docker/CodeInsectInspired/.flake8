@@ -1,0 +1,45 @@
+[flake8]
+max-line-length = 100
+ignore = E203, W503
+filename = fixed50_*.py,run_fixed50_navigation.py,radius15_extension.py,run_radius15_navigation.py,compact_spiral.py,run_compact_spiral_experiment.py,spiral_narrow*.py,run_spiral_narrow_experiment.py,restore_epoch600_baseline.py,near_finetune*.py,run_near_finetune.py,near_data*.py,run_near_data.py,local_probe*.py,run_local_probe.py,radius_*.py,run_radius_navigation.py,epoch_extension*.py,run_epoch_extension.py,continuation_*.py,run_rotation_continuation.py,rotation_*.py,run_rotation_comparison.py,circular_*.py,run_circular_experiment.py,preview_circular_augmentation.py,navigation_*.py,run_navigation_experiment.py,coverage_*.py,run_coverage_experiment.py,check_stage*.py,test_stage*.py,check_landmark_scene.py,test_landmark_scene.py,run_downward_homing.py,run_downward_training.py,generate_downward_environment.py,generate_landmark_environment.py,generate_identifiable_landmarks.py,generate_real_world_environment.py,view_real_world_scene.py,attention_model.py,experiment_*.py,scene_geometry.py,camera_geometry.py,downward_camera.py,frame_stability.py,capture_geometry.py,downward_capture.py,rgb_preprocessing.py,data_preparation.py,downward_data.py,data_diagnostics.py,training_state.py,downward_training.py,render_stage03_preview.py,view_stage03_scene.py
+per-file-ignores =
+    tests/test_stage25_fixed50.py:E402
+    tests/test_stage24_radius15.py:E402
+    tests/test_stage23_compact_spiral.py:E402
+    tests/test_stage22_spiral_narrow.py:E402
+    tests/test_stage02_pipeline.py:E402
+    tools/check_stage02_pipeline.py:E402
+    tools/check_stage03_scene.py:E402
+    tests/test_stage03_scene.py:E402
+    tests/test_landmark_scene.py:E402
+    tools/check_landmark_scene.py:E402
+    tests/test_stage04_camera.py:E402
+    tools/check_stage04_camera.py:E402
+    tests/test_stage04_stability.py:E402
+    tests/test_stage05_capture.py:E402
+    tests/test_stage05_artifacts.py:E402
+    tools/check_stage05_capture.py:E402
+    tools/check_stage05_acceptance.py:E402
+    tools/check_stage06_data.py:E402
+    tests/test_stage06_data.py:E402
+    tests/test_stage06_runtime.py:E402
+    tests/test_stage07_training.py:E402
+    tests/test_stage07_runtime.py:E402
+    tools/check_stage08_scene.py:E402
+    tests/test_stage08_optimization.py:E402
+    tools/check_stage09_scene.py:E402
+    tests/test_stage09_scene.py:E402
+    tools/check_stage10_capture.py:E402
+    tests/test_stage10_rendering.py:E402
+    tests/test_stage10_batch.py:E402
+    tests/test_stage11_coverage.py:E402
+    tests/test_stage12_navigation.py:E402
+    tests/test_stage13_circular.py:E402
+    tools/preview_circular_augmentation.py:E402
+    tests/test_stage14_rotation.py:E402
+    tests/test_stage15_continuation.py:E402
+    tests/test_stage16_epoch_extension.py:E402
+    tests/test_stage17_radius_navigation.py:E402
+    tests/test_stage18_local_probe.py:E402
+    tests/test_stage19_near_data.py:E402
+    tests/test_stage20_near_finetune.py:E402

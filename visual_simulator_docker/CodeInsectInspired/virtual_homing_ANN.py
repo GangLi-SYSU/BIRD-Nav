@@ -1,11 +1,8 @@
 import csv
-from omni.isaac.kit import SimulationApp
-import omni
 import json
 import torch
 import numpy as np
 import matplotlib.pyplot as plt
-from omni.isaac.kit import SimulationApp
 from PIL import Image
 from insect_utils.flight_path_functions import generate_grid_path, calculate_target_vectors, normalize_vectors, \
                                          calculate_absolute_angular_error, calculate_distance, rotate_vector_by_yaw
@@ -24,7 +21,19 @@ def load_config(config_file):
     with open(config_file, 'r') as file:
         return json.load(file)
 
+def create_downward_inference_camera(config, my_world, name="DownwardInference"):
+    """Production inference-camera factory, also used by stage D calibration."""
+    from insect_utils.downward_camera import DownwardCamera
+    return DownwardCamera(config['camera'], my_world, 'sensor', name)
+
 def get_image(orientation, position, camera, my_world, sleep_time = 0.05, save_images = False):
+
+    from insect_utils.downward_camera import DownwardCamera
+    if isinstance(camera, DownwardCamera):
+        from insect_utils.camera_geometry import body_yaw_from_quaternion
+        yaw = body_yaw_from_quaternion(orientation)
+        image, _ = camera.capture(position, yaw, 'inference_{}'.format(camera.last_frame + 1))
+        return image, downward_rgb_tensor(image)
 
     pos = position
 
@@ -50,6 +59,11 @@ def get_image(orientation, position, camera, my_world, sleep_time = 0.05, save_i
         image = image[:,:,:3]
         image_tensor = preprocess(image, save_images = save_images)
         return image, image_tensor
+
+def downward_rgb_tensor(image):
+    """Full RGB frame, same ToTensor scaling as training; no panorama strip crop."""
+    from insect_utils.rgb_preprocessing import rgb_tensor
+    return rgb_tensor(image).unsqueeze(0)
 
 def preprocess(image, save_images = False, counter = None, run_index = None, debug = False, cropbox_params = None):
     """Custom preprocessing logic for image data.
@@ -136,12 +150,17 @@ def load_landmark_locations(locations_path):
 # Main function
 def main(config, verbose = True, graphics = True, save_images = False, simulation_app = None, my_world = None, network_type = "simple"):
 
+    if config.get('render_config', {}).get('camera', {}).get('mode') == 'downward_pinhole':
+        raise ValueError('Downward camera is calibrated separately; full closed-loop control requires stage H')
+
     if simulation_app is None:
+        from omni.isaac.kit import SimulationApp
         with open("config/server.json", 'r') as file:
             options = json.load(file)
         server = options['server']
         simulation_app = SimulationApp({"headless": server})
 
+    import omni
     from omni.isaac.core.utils.rotations import euler_angles_to_quat
     from omni.isaac.sensor import Camera
     from omni.isaac.core import World
@@ -168,11 +187,15 @@ def main(config, verbose = True, graphics = True, save_images = False, simulatio
     # artificial potential field parameters:
     d_lim = 2.0  # distance limit for repulsive potential
     max_step = 2.5  # maximum step size
+    if 'max_step' in params:
+        max_step = params['max_step']
 
     # get the cropbox params:
     # load the config render file:
     config_render_file = "config/config_render.json"
-    config_render = load_config(config_render_file)
+    config_render = config.get('render_config')
+    if config_render is None:
+        config_render = load_config(config_render_file)
     cropbox_params = config_render['crop_box_params']
     image_size = cropbox_params[2] if cropbox_params is not None else 1024
 

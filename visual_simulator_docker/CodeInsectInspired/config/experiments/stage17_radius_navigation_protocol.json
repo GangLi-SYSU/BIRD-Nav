@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "source_navigation_run": "runs/stage16_rotation_600_01/navigation",
+  "source_navigation_fingerprint": "49b441605a9755a1b0d5491b81f6bc0297be053ee4d17397383bb47046e939fb",
+  "selected_epoch": 589,
+  "formal_radii_m": [10, 5],
+  "authorization": "User requested homing tests starting at10m and5m. Use the current validation-selected model,64 trials per radius and the unchanged controller.",
+  "model_check": "Reuse the frozen runtime's8 static engineering observation poses at20m to check live/disk input and reference/export agreement. These are not navigation trials. All new neural navigation trials and rendered oracle returns start only at10m or5m.",
+  "limits": "Single scene and training seed; headings and overlapping fields of view are correlated. The historical20m result is a reference, not rerun in this experiment. Ground truth is used for scoring and engineering checks; formal neural control uses RGB predictions. No training, controller tuning, dynamics or autonomous arrival detector is added."
+}

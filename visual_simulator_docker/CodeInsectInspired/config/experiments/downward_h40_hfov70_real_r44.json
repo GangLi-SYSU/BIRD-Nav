@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "name": "downward_h40_hfov70_real_r44",
+  "purpose": "research",
+  "seed": 10,
+  "output_root": "runs",
+  "scene": {
+    "path": "maps/downward_real_h40_v1/real_scene.usda",
+    "ground_z_m": 0.0
+  },
+  "home": {
+    "ground_xy_m": [
+      0.0,
+      0.0
+    ]
+  },
+  "flight": {
+    "camera_height_agl_m": 40.0
+  },
+  "camera": {
+    "mode": "downward_pinhole",
+    "raw_resolution_wh": [
+      1024,
+      1024
+    ],
+    "hfov_deg": 70.0,
+    "fov_definition_confirmed": true,
+    "crop_box": null
+  },
+  "capture": {
+    "backend": "isaac",
+    "shape_flight": "bee",
+    "shape_params": [
+      5,
+      150,
+      1.4
+    ],
+    "number_cameras": 4,
+    "sample_count_policy": "exact",
+    "headings_per_position": 8
+  },
+  "training": {
+    "model_type": "attention",
+    "criterion": "MSELoss",
+    "optimizer": "AdamW",
+    "learning_rate": 0.0005,
+    "optimizer_kwargs": {
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0.01,
+      "amsgrad": false
+    },
+    "batch_size": 8,
+    "batch_size_val": 8,
+    "batch_size_eval": 8,
+    "epochs": 150,
+    "split_ratio": 0.95,
+    "augment": false,
+    "num_workers": 4
+  },
+  "evaluation": {
+    "radius_m": 10.0,
+    "radius_scales": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      2.5
+    ],
+    "points_per_radius": 16,
+    "max_steps": 50,
+    "success_radius_m": 1.2,
+    "step_rule": "legacy_norm_v1",
+    "max_step_m": 2.5,
+    "pitch_roll_deg": 0.0,
+    "north": false,
+    "fixed_yaw": false
+  },
+  "runtime": {
+    "headless": true,
+    "torch_num_threads": 2
+  },
+  "declared_changes": [
+    "User approved the real-scene preview and requested training; user explicitly selected approximately 44 m learning radius.",
+    "Independent 400 m terrain with 12 normal-scale authored houses,42 textured tree assets and a procedural static 12x7 m pool; populated region is smaller than the terrain.",
+    "Camera optical center 40 m above ground,level body-fixed ideal nadir pinhole,HFOV=VFOV70 degrees,1024 square full RGB,no crop.",
+    "Original bee path n5,m150,b1.4:147 positions and maximum radius43.9823 m; XY is four times the old path,heading stream and grouping seed remain unchanged.",
+    "Eight physically rendered headings per position,1176 new images,four cameras,exact sample accounting; no panorama wrap or additional augmentation.",
+    "Position-group split retained:133 train,6 validation,8 test positions; neighboring footprints may overlap;within-region holdout only.",
+    "Renderer AA off and auto-exposure off are enforced after camera initialization;DLSS limitedOps restriction disabled and observed settings recorded per image. Original MAE<=0.5/255 twice,max90 updates,two subframes retained.",
+    "Separate stage10 training protocol retains nadir384x384 attention,10628 parameters,seed10,AdamW5e-4,batch8,150 epochs,fresh initialization;no smoke weights reused.",
+    "Capture,evaluation and training output paths are isolated from all prior runs.Closed-loop evaluation parameters remain legacy placeholders and closed-loop homing is not run.",
+    "Scene,camera,height,learning range and actual renderer behavior differ from stage08;this run cannot identify the causal effect of asset changes alone.",
+    "Four Replicator cameras share render updates,each retains independent fresh-frame,pose,optics and two-change stability validation;no change to planned observations or thresholds."
+  ]
+}

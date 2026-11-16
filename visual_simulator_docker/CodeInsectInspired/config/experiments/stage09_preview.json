@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "purpose": "scene_preview_only",
+  "scene": "maps/downward_real_h40_v1/real_scene.usda",
+  "camera_height_agl_m": 40.0,
+  "preview_render_subframes": 2,
+  "preview_anti_aliasing": 0,
+  "preview_frame_budget": 24,
+  "camera": {
+    "mode": "downward_pinhole",
+    "raw_resolution_wh": [1024, 1024],
+    "hfov_deg": 70.0,
+    "fov_definition_confirmed": true,
+    "crop_box": null
+  },
+  "comparison_hfov_deg": [60.0, 70.0, 80.0],
+  "inspection_positions": {
+    "junction": [0.0, 0.0],
+    "houses": [-25.0, -25.0],
+    "pool": [20.0, -20.0],
+    "park": [20.0, 40.0]
+  },
+  "training_steps": 0,
+  "notes": [
+    "Preview approval does not start data collection or training.",
+    "Height is the optical center above the flat ground, not above tree canopies.",
+    "Normal-scale authored house assets, existing textured tree assets and a procedural pool; not a photogrammetric reconstruction.",
+    "Future flight path, sampling spacing and training dataset must be reviewed for the wider field of view."
+  ]
+}

@@ -6,7 +6,9 @@ WORKDIR /isaac-sim
 
 # 3. Install any extra python libraries your experiment needs
 # (Isaac Sim's python is accessed via ./python.sh)
-RUN ./python.sh -m pip install scipy matplotlib pandas tqdm scikit-image onnx
+# Preserve Isaac Sim's SciPy version and osqp compatibility.
+ARG PIP_INDEX_URL=https://pypi.org/simple
+RUN ./python.sh -m pip install --no-cache-dir scipy==1.10.1 matplotlib pandas tqdm scikit-image==0.24.0 onnx
 
 # 4. Copy your experiment code into the container
 COPY ./CodeInsectInspired /isaac-sim/CodeInsectInspired

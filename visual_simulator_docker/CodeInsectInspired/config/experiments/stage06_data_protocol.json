@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "confirmation": "User: 按位置分组，保留原比例",
+  "split": {
+    "unit": "position_id; all eight headings stay together",
+    "seed": 10,
+    "generator": "torch.randperm with isolated CPU Generator seeded at 10",
+    "ratio": 0.95,
+    "formula": "pool=int(ratio*positions); validation=int((1-ratio)*pool); training=pool-validation; test=positions-pool",
+    "position_counts": {"train": 133, "validation": 6, "test": 8},
+    "image_counts": {"train": 1064, "validation": 48, "test": 64},
+    "spatial_buffer_m": 0.0,
+    "interpretation": "Within-learning-area grouped holdout; neighboring footprints may overlap; not a spatial generalization claim"
+  },
+  "preprocessing": {
+    "source": "full uint8 RGB or first three channels of uint8 RGBA",
+    "output": "contiguous float32 CHW, values divided by255",
+    "raw_resolution_wh": [1024, 1024],
+    "crop": null,
+    "resize_before_network": null,
+    "panorama_wrap": false,
+    "additional_rotation_augmentation": false
+  },
+  "network": {"type": "original attention", "parameters": 10820, "internal_resize_hw": [192, 1800]},
+  "training": {"batch_size": 8, "epochs": 150, "optimizer_updates_this_stage": 0},
+  "data_source": "Verified stage E four-camera capture, 147 positions x 8 headings; capture artifacts are read-only"
+}

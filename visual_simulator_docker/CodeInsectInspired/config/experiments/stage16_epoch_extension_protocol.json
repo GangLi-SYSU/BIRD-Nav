@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "source_run": "runs/stage15_rotation_300_01",
+  "source_fingerprint": "3665cf58c68419ee102e6065363ed4e9cba585d94b7cf6367fc0896aeb97b593",
+  "source_epoch": 300,
+  "source_optimizer_steps": 153600,
+  "source_checkpoint_sha256": "dc6c1c295bff036465990c2a9d21a2d98ad6b69022894777367eed4a2c19c905",
+  "dataset_run": "runs/stage11_coverage_02",
+  "allowed_target_epochs": [450, 600],
+  "selection": "Select the minimum unchanged full-validation physical component MSE over all inherited and new epochs, with earlier epoch breaking ties. Preserve the historical epoch298 candidate even though training resumes from the latest epoch300 checkpoint. Freeze weights before the same64 neural navigation trials at20m.",
+  "execution": "Only total training epochs change. Restore model, optimizer, RNG and loader states from epoch300. Keep data, original resize-then-rotate augmentation, circle, scale44, network, learning rate0.0005, optimizer, batch8, workers4 and controller. No LR schedule or early stopping.",
+  "limits": "One map and training seed; this increases compute rather than comparing methods at equal budgets. Navigation rendering can vary. If the historical selected model remains best, describe the test as repeated measurement, not a learned improvement. Only20m64-trial neural evaluation; no other radii or static test-set evaluation."
+}

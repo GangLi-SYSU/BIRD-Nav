@@ -20,6 +20,10 @@ def train_model(config = None, only_training = False, append_name_evaluation_fig
     if config is None:
         config = load_config()
 
+    if config.get('camera_mode') == 'downward_pinhole':
+        from insect_utils.downward_training import train_from_config
+        return train_from_config(config)
+
     # finish any existing run and start a new one:
     # wandb.finish()
 
@@ -37,7 +41,8 @@ def train_model(config = None, only_training = False, append_name_evaluation_fig
         model = IncepAttentionCNN_rgb()
     
     criterion = nn.MSELoss()
-    optimizer = optim.AdamW(model.parameters(), lr=config['learning_rate'])
+    optimizer = optim.AdamW(model.parameters(), lr=config['learning_rate'],
+                            **config.get('optimizer_kwargs', {}))
 
     train_loader, val_loader, test_loader, position_map, rotation_map, noisy_position_map, target_map, train_indices, val_indices, test_indices = \
         get_data_loaders(config)
@@ -46,6 +51,11 @@ def train_model(config = None, only_training = False, append_name_evaluation_fig
     model_filename = train(model, train_loader, val_loader, criterion, optimizer, config)
     
     if not only_training:
+        if config.get('camera_mode') == 'downward_pinhole':
+            from insect_utils.downward_data import evaluate_prepared
+            for split in ('train', 'validation', 'test'):
+                evaluate_prepared(model, config, split, graphics=True)
+            return model_filename
         evaluate(model, train_loader, position_map, rotation_map, noisy_position_map, target_map, train_indices, append_name=append_name_evaluation_figure)
         print("Performance on training set:")
         test(model, train_loader, criterion)
@@ -62,6 +72,15 @@ def test_model(model_filename='models/model.pth', config=None, append_name_evalu
     if config == None:
         # Load the config parameters:
         config = load_config()
+
+    if config.get('camera_mode') == 'downward_pinhole':
+        from insect_utils.attention_model import load_attention
+        from insect_utils.downward_data import evaluate_prepared
+        model = load_attention(model_filename, config)
+        result = None
+        for split in ('train', 'validation', 'test'):
+            result = evaluate_prepared(model, config, split)
+        return result
 
     # load the model from the pth file:
     if config['model_type'] == 'simple':

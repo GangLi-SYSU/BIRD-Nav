@@ -1,0 +1,7 @@
+*
+!.gitignore
+!download_environment.py
+!parallel_download.py
+!download_status.py
+!verify_container.py
+!DOWNLOADED.md

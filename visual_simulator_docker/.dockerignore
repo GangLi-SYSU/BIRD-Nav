@@ -1,0 +1,5 @@
+downloads/
+isaac-sim_assets.extracting/
+**/__pycache__/
+CodeInsectInspired/baselines/
+CodeInsectInspired/runs/

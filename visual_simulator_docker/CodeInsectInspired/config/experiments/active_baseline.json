@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-11-02T09:35:58.092080+00:00",
+  "status": "restored",
+  "source_run": "runs/stage16_rotation_600_01",
+  "trained_epochs": 600,
+  "selected_epoch": 600,
+  "selection": "User requested literal epoch600 final weights; no new optimizer updates",
+  "model": {
+    "epoch": 600,
+    "weights": "runs/stage16_rotation_600_01/training/final.pth",
+    "torchscript": "runs/stage21_epoch600_rollback_01/deployment/home_vector_m.torchscript.pt",
+    "onnx": "runs/stage21_epoch600_rollback_01/deployment/home_vector_m.onnx",
+    "scale_m": 44.0,
+    "output_units": "body-frame home vector in meters"
+  },
+  "dataset": {
+    "run": "runs/stage11_coverage_02",
+    "records_sha256": "1de179a19a3209f1fb3c8e986b333d536b8ae9853a650603d2987021481c83b3",
+    "train_images": 4096,
+    "validation_images": 320,
+    "stage19_near_supplement_used": false,
+    "stage20_finetuning_used": false,
+    "spiral_only": false,
+    "caveat": "Historical dataset already contains Stage11 2D coverage samples"
+  },
+  "future_collection_constraint": "Training capture must follow a spiral flight trajectory",
+  "former_navigation_model": {
+    "trained_epochs": 600,
+    "selected_epoch": 589,
+    "weights": "runs/stage16_rotation_600_01/training/best_validation.pth",
+    "torchscript": "runs/stage16_rotation_600_01/training/deployment/home_vector_m.torchscript.pt",
+    "note": "Historical 5/10/20m navigation scores belong to epoch589, not final epoch600"
+  },
+  "navigation_tests_run_after_restore": 0,
+  "success_criterion_modified": false,
+  "export_check": {
+    "status": "passed",
+    "input": "float32 NCHW full RGB/255, [N,3,1024,1024]",
+    "network_resize_hw": [
+      384,
+      384
+    ],
+    "output": "body-frame home vector in meters",
+    "samples": 2,
+    "onnx_max_abs_difference_m": 1.1444091796875e-05,
+    "torchscript_max_abs_difference_m": 0.0,
+    "atol": 1e-05,
+    "rtol": 0.0001,
+    "onnx_sha256": "a58182a692b1f545c9058e63bdb8c0aaec0ee22b4f47d8a83e6cf7dafa167ab0",
+    "torchscript_sha256": "ffb4d5b60a6c5355713fbc3e264c795897b502b2f0c51d2741c7f2f93f2c5789"
+  },
+  "files": {
+    "runs/stage16_rotation_600_01/training/final.pth": "1dd0960dcf74796179e151556dcb165a028f2b124b9c47aabdaadcb1d24a7017",
+    "runs/stage16_rotation_600_01/training/engine_scaled_units/checkpoints/epoch_0600_e59bdb2bd2.pt": "c69e8c6d8018966cde21be71c89fdc9fa408ed61bcea68ea4b5c17e11236bf6a",
+    "runs/stage16_rotation_600_01/frozen.json": "4be344512f2fbe2fa91d3a55cd6527190ad67c4699a91a6eb313f508674bf911",
+    "runs/stage16_rotation_600_01/training/completion.json": "fa65d78a22ba7634e573661104f8e4cf8f27a78ee1cd1080641b838874e677e0",
+    "runs/stage11_coverage_02/dataset.json": "d2ddad22c42277cda244f8ea331fd9fde50771ef36500cac876dcb6395db1868",
+    "restore_epoch600_baseline.py": "5149a363a6b0174f85d188a3fe8d4aa4e4496ab0edd262c73ef6049b12411882",
+    "runs/stage21_epoch600_rollback_01/deployment/export_check.json": "e47b3fcf18ed7da1b9f50de69f760850d24ecaf046448bddd66634bf641dff3b",
+    "runs/stage21_epoch600_rollback_01/deployment/home_vector_m.onnx": "a58182a692b1f545c9058e63bdb8c0aaec0ee22b4f47d8a83e6cf7dafa167ab0",
+    "runs/stage21_epoch600_rollback_01/deployment/home_vector_m.torchscript.pt": "ffb4d5b60a6c5355713fbc3e264c795897b502b2f0c51d2741c7f2f93f2c5789"
+  },
+  "fingerprint": "9509eb95c61c8e26af9c5054de03505ddbaa676858b8cf11420d58b35112c835",
+  "manifest": "runs/stage21_epoch600_rollback_01/baseline.json"
+}

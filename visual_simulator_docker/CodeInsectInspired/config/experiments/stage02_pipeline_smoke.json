@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "stage02_pipeline_smoke",
+  "purpose": "engineering_smoke",
+  "seed": 10,
+  "output_root": "runs",
+  "scene": {"path": "maps/env3_clean.usd", "ground_z_m": 0.0},
+  "home": {"ground_xy_m": [0.0, 0.0]},
+  "flight": {"camera_height_agl_m": 1.5},
+  "camera": {
+    "mode": "panorama_legacy",
+    "raw_resolution_wh": [1024, 1024],
+    "hfov_deg": null,
+    "fov_definition_confirmed": false,
+    "crop_box": [0, 312, 1024, 712]
+  },
+  "capture": {
+    "backend": "synthetic_smoke",
+    "shape_flight": "bee",
+    "shape_params": [5, 27, 0.35],
+    "number_cameras": 4,
+    "sample_count_policy": "exact"
+  },
+  "training": {
+    "model_type": "attention",
+    "criterion": "MSELoss",
+    "optimizer": "AdamW",
+    "learning_rate": 0.0005,
+    "optimizer_kwargs": {"betas": [0.9, 0.999], "eps": 1e-8, "weight_decay": 0.01, "amsgrad": false},
+    "batch_size": 8,
+    "batch_size_val": 8,
+    "batch_size_eval": 8,
+    "epochs": 1,
+    "split_ratio": 0.95,
+    "augment": false,
+    "num_workers": 0
+  },
+  "evaluation": {
+    "radius_m": 10.0,
+    "radius_scales": [0.5, 1.0, 1.5, 2.0, 2.5],
+    "points_per_radius": 16,
+    "max_steps": 50,
+    "success_radius_m": 1.2,
+    "step_rule": "legacy_norm_v1",
+    "max_step_m": 2.5,
+    "pitch_roll_deg": 0.0,
+    "north": false,
+    "fixed_yaw": false
+  },
+  "runtime": {"headless": true, "torch_num_threads": 2},
+  "declared_changes": [
+    "Synthetic integration fixture: no physical camera or scene is rendered.",
+    "24 artificial images, one epoch and zero DataLoader workers exercise process and artifact handling only.",
+    "This run cannot produce research homing results and cannot run closed-loop evaluation."
+  ]
+}

@@ -7,6 +7,15 @@ This folder provides the simulation framework built around **Isaac Sim** that ac
 - Simulation of the homing process using virtual cameras and drones.
 - Analysis of neural network performance for visual navigation tasks.
 
+The current custom experiment compresses the same147 spiral sampling positions
+into a20m radius at40m altitude and30° FOV, followed by600 training epochs and
+10m/20m navigation tests with a2m success radius.
+See [configuration, commands and live results](docs/compact20_spiral_experiment.md).
+An additional [15m navigation test](docs/radius15_test.md) uses the same selected
+model and2m success radius, with no new training.
+The [fixed50-action15m test](docs/fixed50_test.md) continues after entering the2m
+area and measures the final endpoint, with labelled distance circles and live paths.
+
 The code was tested on a 12th Gen Intel(R) Core(TM) i9-12900HK 2.50 GHz, with 32 GB of RAM, under Ubuntu 22.04. We used Visual Studio Code with Python 3.9.13. Please note that the PyTorch version we used was 2.1.0+cu121, i.e., a CUDA enabled one. The computer was equipped with an NVIDIA GeForce RTX 3050. 
 
 ============

@@ -1,0 +1,66 @@
+[
+  {
+    "slug": "modern-house",
+    "source_url": "https://grab3d.com/models/buildings/modern-house/",
+    "license": "CC0-1.0",
+    "origin": {
+      "method": "procedural",
+      "detail": "Built procedurally with Blender scripts. The scripts were written with the help of an AI coding assistant. No generative AI model produced the geometry or textures directly.",
+      "ai_content": false,
+      "ai_assisted_code": true
+    },
+    "package_sha256": "a8843ed62c1aef3d791d9aba44b4ac66562bf3af82dd4a3e44053bb058f194b5",
+    "source_dimensions": "14.917 x 10.000 x 7.800",
+    "usd_files": [
+      "modern-house/unpacked/modern-house.usdc"
+    ]
+  },
+  {
+    "slug": "japanese-house",
+    "source_url": "https://grab3d.com/models/buildings/japanese-house/",
+    "license": "CC0-1.0",
+    "origin": {
+      "method": "procedural",
+      "detail": "Built procedurally with Blender scripts. The scripts were written with the help of an AI coding assistant. No generative AI model produced the geometry or textures directly.",
+      "ai_content": false,
+      "ai_assisted_code": true
+    },
+    "package_sha256": "aa67187a1dcc4645b518474e5102b97392e21c7eeaa68823a4de6e196204c953",
+    "source_dimensions": "14.364 x 10.500 x 5.745",
+    "usd_files": [
+      "japanese-house/unpacked/japanese-house.usdc"
+    ]
+  },
+  {
+    "slug": "alpine-chalet",
+    "source_url": "https://grab3d.com/models/buildings/alpine-chalet/",
+    "license": "CC0-1.0",
+    "origin": {
+      "method": "procedural",
+      "detail": "Built procedurally with Blender scripts. The scripts were written with the help of an AI coding assistant. No generative AI model produced the geometry or textures directly.",
+      "ai_content": false,
+      "ai_assisted_code": true
+    },
+    "package_sha256": "60e81e9b659be68a1d83038b1eb159cb5492e9fc16e161c023e74f524b79ff7a",
+    "source_dimensions": "11.463 x 10.180 x 7.964",
+    "usd_files": [
+      "alpine-chalet/unpacked/alpine-chalet.usdc"
+    ]
+  },
+  {
+    "slug": "suburban-family-house",
+    "source_url": "https://grab3d.com/models/buildings/suburban-family-house/",
+    "license": "CC0-1.0",
+    "origin": {
+      "method": "procedural",
+      "detail": "Built procedurally with Blender scripts. The scripts were written with the help of an AI coding assistant. No generative AI model produced the geometry or textures directly.",
+      "ai_content": false,
+      "ai_assisted_code": true
+    },
+    "package_sha256": "5ff79367b0984b88f8201f40e810b058795192b840b10c1a9679a0daa3ce9185",
+    "source_dimensions": "12.980 x 11.100 x 10.051",
+    "usd_files": [
+      "suburban-family-house/unpacked/suburban-family-house.usdc"
+    ]
+  }
+]

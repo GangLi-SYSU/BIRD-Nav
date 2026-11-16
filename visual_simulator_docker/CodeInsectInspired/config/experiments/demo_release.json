@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "protocol": {
+    "scene": "maps/downward_real_h40_v1/real_scene.usda",
+    "home_camera_xyz_m": [
+      0.0,
+      0.0,
+      40.0
+    ],
+    "ground_z_m": 0.0,
+    "controller": {
+      "success_radius_m": 2.0,
+      "max_steps": 50,
+      "step_offset_m": 0.1,
+      "step_gain": 0.13333333333333333,
+      "max_step_m": 2.5,
+      "minimum_prediction_norm_m": 1e-06,
+      "fixed_yaw": false
+    },
+    "formal": {
+      "radii_m": [
+        10,
+        20
+      ],
+      "bearings_per_radius": 16,
+      "initial_yaws_deg": [
+        0,
+        90,
+        180,
+        270
+      ]
+    },
+    "rendered_oracle": {
+      "radii_m": [
+        10,
+        20
+      ],
+      "bearings_per_radius": 4,
+      "initial_yaws_deg": [
+        45
+      ]
+    },
+    "runtime": {
+      "headless": true,
+      "camera_count": 4,
+      "model_device": "cpu",
+      "torch_num_threads": 2,
+      "seed": 10,
+      "safety_margin_m": 5.0
+    },
+    "success_definition": "Terminate at an executed action endpoint with simulator-truth horizontal distance<=2m; otherwise fail after50 actions. Seeing home in the image is not the success criterion. Initial success and segment crossing are reported separately.",
+    "supervision": "Formal model decisions use RGB and current yaw only. Ground truth scores arrival and checks scene bounds. The rendered oracle is a separately labelled engineering check,not a neural result.",
+    "camera": {
+      "mode": "downward_pinhole",
+      "raw_resolution_wh": [
+        1024,
+        1024
+      ],
+      "hfov_deg": 30.0,
+      "fov_definition_confirmed": true,
+      "crop_box": null
+    }
+  },
+  "model": {
+    "arm": "fresh_spiral30_mask_rotation",
+    "epoch": 484,
+    "weights": "assets/models/stage23_epoch484/best_validation.pth",
+    "torchscript": "assets/models/stage23_epoch484/home_vector_m.torchscript.pt",
+    "scale_m": 44.0,
+    "output_units": "body-frame home vector in meters"
+  },
+  "provenance": {
+    "experiment": "stage23_compact_spiral_h40_fov30_01",
+    "selected_epoch": 484,
+    "source_fingerprint": "45282ab55cf1129ccb229f6a6664ecde2d499efebbabfece1a645a896e3f15c2"
+  },
+  "model_sha256": {
+    "best_validation.pth": "fadc356667d86a662777f45ded6dc68e76b8c8046e73da8af2414f0f06fdba1f",
+    "home_vector_m.torchscript.pt": "31ded9f200a9538d1358cd7e331c001dbd746d97263a532793f0e633f5f48119",
+    "home_vector_m.onnx": "72590ff6c92fcab01b6c16fc7225e280bca39beedd4d31c65231edeebe06535e"
+  }
+}

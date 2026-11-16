@@ -1,0 +1,19 @@
+﻿path,category,file_size_bytes,disk_allocated_bytes,larger_than_100_mib
+Bee-Nav/visual_simulator_docker/downloads/docker-disk/docker.ext4,Docker 工作磁盘,42949672960,34536009728,True
+Bee-Nav/visual_simulator_docker/downloads/isaac-sim-4.2.0.docker.tar,Isaac 镜像归档,9170513920,9170513920,True
+Bee-Nav/visual_simulator_docker/CodeInsectInspired/maps/downward_landmarks_v1/ground.png,历史几何路标场景地面纹理,106107176,106110976,True
+Bee-Nav/visual_simulator_docker/CodeInsectInspired/maps/downward_landmarks_v2/ground.png,历史几何路标场景地面纹理,106107176,106110976,True
+Bee-Nav/visual_simulator_docker/isaac-sim_assets/Trees/materials/textures/bark1_normal.png,树木模型、纹理或环境光素材,105612820,105615360,True
+Bee-Nav/visual_simulator_docker/isaac-sim_assets/qwantani.hdr,树木模型、纹理或环境光素材,99605634,99606528,False
+Bee-Nav/visual_simulator_docker/isaac-sim_assets/Trees/materials/textures/bark1_basecolor.png,树木模型、纹理或环境光素材,90017531,90017792,False
+Bee-Nav/visual_simulator_docker/isaac-sim_assets/Trees/materials/textures/pinebark1_basecolor.png,树木模型、纹理或环境光素材,89876465,89878528,False
+Bee-Nav/visual_simulator_docker/isaac-sim_assets/Trees/materials/textures/sycamorebark2_basecolor.png,树木模型、纹理或环境光素材,88078584,88080384,False
+Bee-Nav/visual_simulator_docker/CodeInsectInspired/maps/downward_real_h40_v1/assets/nvidia/Trees/Japanese_Maple.usd,树木模型、纹理或环境光素材,81775915,81776640,False
+Bee-Nav/visual_simulator_docker/CodeInsectInspired/runs/stage09_real_preview/initial_bundle_missing_mdl_textures/assets/nvidia/Trees/Japanese_Maple.usd,历史实验中的素材副本,81775915,81776640,False
+Bee-Nav/visual_simulator_docker/isaac-sim_assets/Trees/Japanese_Maple.usd,树木模型、纹理或环境光素材,81775915,81776640,False
+Bee-Nav/visual_simulator_docker/isaac-sim_assets/Trees/Hawthorn.usd,树木模型、纹理或环境光素材,81600526,81604608,False
+Bee-Nav/visual_simulator_docker/isaac-sim_assets/Trees/Orange_Tree.usd,树木模型、纹理或环境光素材,71059298,71061504,False
+Bee-Nav/visual_simulator_docker/isaac-sim_assets/Trees/Japanese_Maple_Fall.usd,树木模型、纹理或环境光素材,62584364,62586880,False
+Bee-Nav/visual_simulator_docker/CodeInsectInspired/runs/interactive_demo/20261110_095601_903728/events.jsonl,交互演示日志,59376753,59379712,False
+Bee-Nav/visual_simulator_docker/isaac-sim_assets/Trees/Lombardy_Poplar.usd,树木模型、纹理或环境光素材,55478829,55480320,False
+Bee-Nav/visual_simulator_docker/isaac-sim_assets/Trees/Lombardy_Poplar_Fall.usd,树木模型、纹理或环境光素材,55478183,55480320,False

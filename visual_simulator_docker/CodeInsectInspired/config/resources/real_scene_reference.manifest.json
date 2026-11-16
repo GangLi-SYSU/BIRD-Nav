@@ -1,0 +1,1623 @@
+{
+  "schema_version": 1,
+  "entry": "real_scene.usda",
+  "profile": "residential_park_preview",
+  "purpose": "scene_preview_only",
+  "meters_per_unit": 1,
+  "up_axis": "Z",
+  "bounds_xy_m": [
+    [
+      -200,
+      -200
+    ],
+    [
+      200,
+      200
+    ]
+  ],
+  "ground_z_m": 0,
+  "max_surface_height_agl_m": 19.73891435372275,
+  "asset_sha256": {
+    "assets/houses/alpine-chalet/alpine-chalet.usdc": "e5cbb4d7eb4a99249e510b6e8b721ba498aee9ef9caea3f6855c9527ad6d7348",
+    "assets/houses/alpine-chalet/textures/alpine-chalet_body_basecolor.jpg": "e0d74ea2273a53e1476796d803e6a01e45e236118817f1cc1d6bb3167b1e365f",
+    "assets/houses/alpine-chalet/textures/alpine-chalet_body_metallic-alpine-chalet_body_roughness_metallic.jpg": "1d722d4d1132765194b16bc91eb68045a762cedda0f0eccf262bedee114acc53",
+    "assets/houses/alpine-chalet/textures/alpine-chalet_body_metallic-alpine-chalet_body_roughness_roughness.jpg": "e5c8675c16f6e0be0915b84b80d8d9d7af6d2cfdf7381fe4a29a96b9e0c338a4",
+    "assets/houses/alpine-chalet/textures/alpine-chalet_body_normal.jpg": "a4cc17cccb8cfe5ed3754fe79f6ac0a0070daa279b313efffd275ed206c549cb",
+    "assets/houses/japanese-house/japanese-house.usdc": "91639f1ecec4371ff5e5f1af3df4d3ba9e8b38db1bd75dde3258b281c193e8ca",
+    "assets/houses/japanese-house/textures/japanese-house_body_basecolor.jpg": "d18a2b934b03b31e72f9bf5742d6bcd008d00a05e0b953a9ca1fdddfe55ae7a3",
+    "assets/houses/japanese-house/textures/japanese-house_body_metallic-japanese-house_body_roughness_metallic.jpg": "0f5c60b2637f7223acdf71f6184d55d2b275326006761c1098859a683a1cc0bb",
+    "assets/houses/japanese-house/textures/japanese-house_body_metallic-japanese-house_body_roughness_roughness.jpg": "f65d6cda0a5dc81b78d326b10b8b60bb8ea8a99bd2c52b7a885805273b22b0da",
+    "assets/houses/japanese-house/textures/japanese-house_body_normal.jpg": "447f4fb5570a59752e6a3da35245924cb1cb30a949444c50a1c0db7bd414ac2b",
+    "assets/houses/modern-house/modern-house.usdc": "2fc4f133e6324b618adbc5443aabca7c58462e84bfc69232c47dd18e81a303f6",
+    "assets/houses/modern-house/textures/modern-house_body_basecolor.jpg": "1853129c87c818a4f8bea4a74fa0a3e4533352b0a7557cb47b6f8a7330a5f56e",
+    "assets/houses/modern-house/textures/modern-house_body_metallic-modern-house_body_roughness_metallic.jpg": "d639e4d9ab6225b35e9447e7a80d74222a615566f2b7f0a7243bc4e37eead94d",
+    "assets/houses/modern-house/textures/modern-house_body_metallic-modern-house_body_roughness_roughness.jpg": "31209e49470e96a6f54bf679043b136820fed662f26e37da994b19ef22b9b616",
+    "assets/houses/modern-house/textures/modern-house_body_normal.jpg": "71f1a327daf4cb30143385dce725ebf8fd6e816c3ed45ac74f982cbe9129b7c1",
+    "assets/houses/suburban-family-house/suburban-family-house.usdc": "4cddbab8812e7848391f7c51ae062a67575f5a76e478921591eada9bcc2ebba1",
+    "assets/houses/suburban-family-house/textures/suburban-family-house_body_basecolor.jpg": "39c3f339a745204eb8bda798190bd680a81c10f98c55881fcd88b9455f3af8c6",
+    "assets/houses/suburban-family-house/textures/suburban-family-house_body_metallic-suburban-family-house_body_roughness_metallic.jpg": "3d27600fef5269db33ad49d62df4000f20a46a89757948feaff0b79c82b25c26",
+    "assets/houses/suburban-family-house/textures/suburban-family-house_body_metallic-suburban-family-house_body_roughness_roughness.jpg": "202cc34e2fa061743f04e07e14f0d39f74807dffe7d1b3b57de2c9bdfa348a1e",
+    "assets/houses/suburban-family-house/textures/suburban-family-house_body_normal.jpg": "1e40f71fd825b55326f68d7a4b6a081430ae0b75772089d3fb922be79bd68123",
+    "assets/houses/suburban-family-house/textures/suburban-family-house_trim_basecolor.jpg": "1d101eedfc5d532f1933c651ddf76a930721c67dedf7021cf8e8e2a541010d99",
+    "assets/houses/suburban-family-house/textures/suburban-family-house_trim_metallic-suburban-family-house_trim_roughness_metallic.jpg": "d190b9aeeb98a7b673894f5f8a59be2c429bee99e0c2bd6a8fd560dd34cf5eed",
+    "assets/houses/suburban-family-house/textures/suburban-family-house_trim_metallic-suburban-family-house_trim_roughness_roughness.jpg": "ac3ac926f48af37d10bb5cbac15e5bd2be35e859b80e42f96735798b7d298f62",
+    "assets/houses/suburban-family-house/textures/suburban-family-house_trim_normal.jpg": "a2fbe6afbed29775c3ea54738032da901f56210b9651fe4b4d6640dd384d0437",
+    "assets/nvidia/Trees/Black_Oak.usd": "d580a33b690ded5c3da1efc2f29674eba6234f697a7b50981e674a057f580115",
+    "assets/nvidia/Trees/Blue_Berry_Elder.usd": "9af6bc068b45e2685b3ba5c537189d46fcb2d14d5c33278180902bd960dce52d",
+    "assets/nvidia/Trees/Common_Apple.usd": "5c97fc80239ec331a43fca2741a1b1b799293aad9330d5410f4b74dd2c425b4d",
+    "assets/nvidia/Trees/Dogwood.usd": "4d857d8921707273f6ff75cb9815d98afbf358fa4069d0f365963610c090413f",
+    "assets/nvidia/Trees/Japanese_Cherry.usd": "21c49c87ece9682779b5676b367385c412a525fce19955ee2d713683e06e1bfb",
+    "assets/nvidia/Trees/Japanese_Maple.usd": "b2a99faaa8e1f04149a78af695c6daa3b9760ebd84c851ba55fbde7c5e63dd80",
+    "assets/nvidia/Trees/Service_Berry.usd": "71682d44d8de8b095911754a879cc3248c8972b7f4276ec0151af9bbc33a66bb",
+    "assets/nvidia/Trees/materials/Apple_bark_Mat.mdl": "ea6ef3ebd830205ed5b85fee89c624ab9c069122d1ddec9749a01e2d077a846b",
+    "assets/nvidia/Trees/materials/Apple_leaf_Mat.mdl": "204a4366e36063c0a042ab604f06902c7c2c3c472d995e19adc4335b5c7e2df4",
+    "assets/nvidia/Trees/materials/Dogwood_leaf_Mat.mdl": "bda3f35d0f727bf5fa43e498a76ae8ce6100c0a3c23535feacae89c6030d640b",
+    "assets/nvidia/Trees/materials/Dogwood_leaf_v2_Mat.mdl": "8d8818a945ac378eb8cd9dfbfd28cc4f1520d7e679636536efba64e57466c315",
+    "assets/nvidia/Trees/materials/Dogwood_leaf_v3_Mat.mdl": "4b2b9ab58fbb1b172ff1cabb12c0acc4034e3168d723b6d39e8b78b5ea6b580f",
+    "assets/nvidia/Trees/materials/Dogwood_leaf_v4_Mat.mdl": "0630c5f282100dbebeb616678cee5528f96a7b50117904c998d56f5e9e1c6537",
+    "assets/nvidia/Trees/materials/HollyPrivet_Mat.mdl": "82175af8682c6eda859fafc766aa52f946c1e327becdb88567f0c9534f186a2d",
+    "assets/nvidia/Trees/materials/JapaneseCherry_blossom_Mat.mdl": "bedc26b349b797f98894c0ce80d6301b7c5dfba59ae7b6fe5c8c7be1c197720c",
+    "assets/nvidia/Trees/materials/JapaneseMaple_leaf_baseColor_Mat.mdl": "b9f3411f2ad2a92c2513db6929a348f8f12b6b5c43ec9272bb708b71e8fa7db2",
+    "assets/nvidia/Trees/materials/JapaneseMaple_leaf_baseColor_v2_Mat.mdl": "7f5077671aade4c0d9893b3f7aa3bea3ea3760a6778fbcdff8a5de3dd85447da",
+    "assets/nvidia/Trees/materials/JapaneseMaple_leaf_baseColor_v3_Mat.mdl": "09cfae8f387996d146868c87937b52c656346143a9610a5c357dbb817ea9efb2",
+    "assets/nvidia/Trees/materials/JapaneseMaple_leaf_baseColor_v4_Mat.mdl": "69c701c365d84dfe7fa2265ccf64ffcf3f0d7cdea9810737bcdda5c2999a7efc",
+    "assets/nvidia/Trees/materials/ServiceBerry_flower_Mat.mdl": "1188dbc7809881c3336ab4323c18c19db914377fba46696094718033c6553c72",
+    "assets/nvidia/Trees/materials/Shumard_Oak_leaf_Mat2.mdl": "0f28a7aeba996017b30817fe3504a3670eaaa02caaa09549749796f98b2a986b",
+    "assets/nvidia/Trees/materials/Shumard_Oak_leaf_v2_Mat2.mdl": "d956d911aeb3a13b3e7cc5d27d5715245f567ae0c6bd4f4f59df11d0f1d943bc",
+    "assets/nvidia/Trees/materials/Shumard_Oak_leaf_v3_Mat2.mdl": "45f662ab26dcef72da6ecc6f3abb47dd4c229700c02bfa1cf86818f63b523a64",
+    "assets/nvidia/Trees/materials/Shumard_Oak_leaf_v4_Mat2.mdl": "18d52949a12a1ad78eb9e911c1dab3b26bcc06625764703e569980fbcab0ce56",
+    "assets/nvidia/Trees/materials/TreeBark_07.mdl": "e461858c3173d382eff8a8d8c0623c1675dc32521e0e7bc8c9c81bd30b3990fa",
+    "assets/nvidia/Trees/materials/bark3.mdl": "99bc4a876c493b90e490d078835e4a2200327bd89621074b54584ed106c67442",
+    "assets/nvidia/Trees/materials/textures/alter49_tree7_basecolor.png": "db12cfe1e22827d53b1211d4bb5de0a82b774cc37e73c614116627d9f278e199",
+    "assets/nvidia/Trees/materials/textures/alter49_tree7_normal.png": "9367e64b1b51e59d58702b9d91c61bd25789640193d0c3fc518ea511156f9356",
+    "assets/nvidia/Trees/materials/textures/alter49_tree7_roughness.png": "851deda558f83dd8cc0e371f025ab041dcb109ac8dcdaee0e13b2a04715b72ec",
+    "assets/nvidia/Trees/materials/textures/apple_leaf_basecolor.png": "a574b88f75ec09f6d70f6e14543d6d3a15a1eebd7aefeaa5488bad811a0527f3",
+    "assets/nvidia/Trees/materials/textures/apple_leaf_normal.png": "695100425ecca5eb0d930a208c6cd36580bc8886ae296b9bf08d0940c899368e",
+    "assets/nvidia/Trees/materials/textures/bark2_basecolor.png": "f3e2604b32a9c8b54eebab399af04ac5910bea9423568a12ce7513d33201f7f0",
+    "assets/nvidia/Trees/materials/textures/bark2_normal.png": "0759156f992c96e96aab95e771781a5ea7800524cc9fdd932f77cca14c8c2bd2",
+    "assets/nvidia/Trees/materials/textures/bark2_roughness.png": "1573183e7b5dda12ca8e0d2658b80cbd412d0d8eb453583939d9ddc26b6c8ac0",
+    "assets/nvidia/Trees/materials/textures/bark3_basecolor.png": "ac31fed1a954d7b41830b4e6d1a97f2958fc66107a3ef809d767ef088fbc9489",
+    "assets/nvidia/Trees/materials/textures/bark3_normal.png": "2dab62d9390ba8ff6dba827ec8a795eb036efc1b2e66d62ce2db88575ce05f1d",
+    "assets/nvidia/Trees/materials/textures/bark3_roughness.png": "f658b87c17cffd39dd8410de511ce662a053988144b99ee81601ca2bc087f18a",
+    "assets/nvidia/Trees/materials/textures/cherryblossom.png": "ce59fb77efa7c8d1b14186c875dc922f9fbe698b197a590b53c3ec7c50cf12e5",
+    "assets/nvidia/Trees/materials/textures/dogwood_leaf.png": "79b275618b468085b3c080990873dd2f162e36350e0ed72d82fa69a6e06475b4",
+    "assets/nvidia/Trees/materials/textures/dogwood_leaf_normal.png": "69cda05ac758038c9000b7dca2bb677c71e387394138878f54f44c6dfc62989a",
+    "assets/nvidia/Trees/materials/textures/dogwood_leaf_roughness.png": "0ef5ce7dc7e3de95d5ce23dfbcb47fcac739b3403eaaacc4265c28c994ca74ec",
+    "assets/nvidia/Trees/materials/textures/dogwood_leaf_v2.png": "1e5a6a885234530049488be80669411fc637286532a7a645abd4632528d26171",
+    "assets/nvidia/Trees/materials/textures/dogwood_leaf_v3.png": "b246390f1d595c641d8b3dd5e98e6bb6b71c8c9b1018413f8625897d07c2bb14",
+    "assets/nvidia/Trees/materials/textures/dogwood_leaf_v4.png": "7947567638e580265bf2defac83824f8b4160cfd757bad737d6c6c52645f0b53",
+    "assets/nvidia/Trees/materials/textures/hollyprivet_basecolor.png": "92825c5ff08ee0c6608bb006ca053412ec2a2411d0931793964daeb3054d5898",
+    "assets/nvidia/Trees/materials/textures/hollyprivet_normal.png": "f7a872af1be5c016ac633b2b4933948a48a426fe095d10c0b55bcdf9242282b7",
+    "assets/nvidia/Trees/materials/textures/hollyprivet_roughness.png": "31e60e9681dd0a792e2af715e1b146bad5959200141e07ecf8352d2192d92121",
+    "assets/nvidia/Trees/materials/textures/japanesemaple_leaf_basecolor.png": "2af5534acf89a3d49627781dee76eace58d92fc74b57eac0b4acf950fabfa99a",
+    "assets/nvidia/Trees/materials/textures/japanesemaple_leaf_basecolor_v2.png": "b4fad0391938c06936819a52440f0e1b9fc9cb54180ffba5aeeb59b4a290d257",
+    "assets/nvidia/Trees/materials/textures/japanesemaple_leaf_basecolor_v3.png": "17b9d7caf7522374747cce00a6a533b16c8684098b6b3949310b620febf32d16",
+    "assets/nvidia/Trees/materials/textures/japanesemaple_leaf_basecolor_v4.png": "6c8828be788e54d21f15a1ed9ede8a388552831fb3c0914295f27a3544d0cb9c",
+    "assets/nvidia/Trees/materials/textures/japanesemaple_leaf_normal.png": "ada20fe5400c46e88a631242133e3fbcb9844710b532a92588a29d264c0b2daa",
+    "assets/nvidia/Trees/materials/textures/japanesemaple_leaf_roughness.png": "dcc30ff7df4c8d8c23e9949d3892b3f422e518a4a1aa9296159da988553c47b8",
+    "assets/nvidia/Trees/materials/textures/oakleaves1_basecolor.png": "e14102ee1c58d950227ef6e53e079fa6d562d473131287f867e4d61cb790ca2e",
+    "assets/nvidia/Trees/materials/textures/oakleaves1_normal.png": "c43eeaee4b3c8b097d4de30a1fb5227e6338612f52e21ac7f703d8a65c74ae63",
+    "assets/nvidia/Trees/materials/textures/oakleaves1_roughness.png": "b2ed6203e5883eb6871cea973e10e733ac95340ba09dccb7b0c4e26eb96b01fc",
+    "assets/nvidia/Trees/materials/textures/oakleaves2_basecolor.png": "38e8dbede80d3a4e279e83d96e65d087cf7749811e17ec710c6359928355621e",
+    "assets/nvidia/Trees/materials/textures/oakleaves3_basecolor.png": "fe7fa62d4a84f064b151d5d414f3e8fbd5b205314c5bb44e4d462e413d1485c8",
+    "assets/nvidia/Trees/materials/textures/oakleaves4_basecolor.png": "84edce4ac23ffc81d4aa89b36c550172e9af8f0d840b044927f1362dd349c233",
+    "assets/nvidia/Trees/materials/textures/pearlbush_basecolor.png": "d327a8c333e853008a58e97b2d83b2330d795029f9ddac365e453db89323e720",
+    "assets/nvidia/Trees/materials/textures/pearlbush_normal.png": "b5481aef4857d60d29d0d2da41359b0759ea085af247e173a0af4cc1df7824a1",
+    "assets/nvidia/Trees/materials/textures/tree_bark_03_diff_2k.png": "fe51f838c6347eea0aa1445fda21b1b025b62f35e61598897f0dbe98c042f35d",
+    "assets/nvidia/Trees/materials/textures/tree_bark_03_nor_2k.png": "32fade98a1231a12a37c15eca42445421032f9e77c0346f2b0fd258dbb25324b",
+    "assets/nvidia/Trees/materials/textures/tree_bark_03_rough_2k.png": "3e2d3c6c4d0685318e6a6b0dce482ef449358f00c4fdeeee6c496a36ad0f97d9",
+    "assets/nvidia/Trees/materials/tree_bark_03_2k.mdl": "04418134a320d3424958b99f078b35c66cda1c2352294fd738045ae547ec8d09",
+    "real_scene.usda": "ae5ae334c7bea7d7a08fb30a00c3f012baa5555c81f32efcb62087d1590a23c8",
+    "textures/asphalt.png": "27b5d56b9ba772de55bca91a7684e01966924c20db5ab85ac21b64ba84f06298",
+    "textures/grass.png": "9a3e1188aba15180d8b46d4bb7673f1ad36704f8ab68739d9774e7cff7da17c0",
+    "textures/water.png": "260141863642424a4d133f9ef3295a247999a407730fdd4dd4e3f2584e13957d"
+  },
+  "models": [
+    {
+      "id": "modern-house",
+      "path": "assets/houses/modern-house/modern-house.usdc",
+      "source_units_m": 1.0,
+      "source_up_axis": "Y",
+      "bounds_z_up_m": [
+        [
+          -7.4585795402526855,
+          -5.000000000000002,
+          -1.1102230246251565e-15
+        ],
+        [
+          7.4585795402526855,
+          5.0,
+          7.800000190734864
+        ]
+      ],
+      "size_xyz_m": [
+        14.917159080505371,
+        10.000000000000002,
+        7.800000190734865
+      ],
+      "source": {
+        "slug": "modern-house",
+        "source_url": "https://grab3d.com/models/buildings/modern-house/",
+        "license": "CC0-1.0",
+        "origin": {
+          "method": "procedural",
+          "detail": "Built procedurally with Blender scripts. The scripts were written with the help of an AI coding assistant. No generative AI model produced the geometry or textures directly.",
+          "ai_content": false,
+          "ai_assisted_code": true
+        },
+        "package_sha256": "a8843ed62c1aef3d791d9aba44b4ac66562bf3af82dd4a3e44053bb058f194b5",
+        "source_dimensions": "14.917 x 10.000 x 7.800",
+        "usd_files": [
+          "modern-house/unpacked/modern-house.usdc"
+        ]
+      }
+    },
+    {
+      "id": "japanese-house",
+      "path": "assets/houses/japanese-house/japanese-house.usdc",
+      "source_units_m": 1.0,
+      "source_up_axis": "Y",
+      "bounds_z_up_m": [
+        [
+          -7.181933879852295,
+          -5.250000000000001,
+          -1.1657341758564144e-15
+        ],
+        [
+          7.181933879852295,
+          5.249999999999999,
+          5.744735717773438
+        ]
+      ],
+      "size_xyz_m": [
+        14.36386775970459,
+        10.5,
+        5.744735717773439
+      ],
+      "source": {
+        "slug": "japanese-house",
+        "source_url": "https://grab3d.com/models/buildings/japanese-house/",
+        "license": "CC0-1.0",
+        "origin": {
+          "method": "procedural",
+          "detail": "Built procedurally with Blender scripts. The scripts were written with the help of an AI coding assistant. No generative AI model produced the geometry or textures directly.",
+          "ai_content": false,
+          "ai_assisted_code": true
+        },
+        "package_sha256": "aa67187a1dcc4645b518474e5102b97392e21c7eeaa68823a4de6e196204c953",
+        "source_dimensions": "14.364 x 10.500 x 5.745",
+        "usd_files": [
+          "japanese-house/unpacked/japanese-house.usdc"
+        ]
+      }
+    },
+    {
+      "id": "alpine-chalet",
+      "path": "assets/houses/alpine-chalet/alpine-chalet.usdc",
+      "source_units_m": 1.0,
+      "source_up_axis": "Y",
+      "bounds_z_up_m": [
+        [
+          -5.731345891952515,
+          -5.089799165725709,
+          -1.1258109190139182e-15
+        ],
+        [
+          5.731345891952515,
+          5.089799165725708,
+          7.963529109954835
+        ]
+      ],
+      "size_xyz_m": [
+        11.46269178390503,
+        10.179598331451416,
+        7.963529109954836
+      ],
+      "source": {
+        "slug": "alpine-chalet",
+        "source_url": "https://grab3d.com/models/buildings/alpine-chalet/",
+        "license": "CC0-1.0",
+        "origin": {
+          "method": "procedural",
+          "detail": "Built procedurally with Blender scripts. The scripts were written with the help of an AI coding assistant. No generative AI model produced the geometry or textures directly.",
+          "ai_content": false,
+          "ai_assisted_code": true
+        },
+        "package_sha256": "60e81e9b659be68a1d83038b1eb159cb5492e9fc16e161c023e74f524b79ff7a",
+        "source_dimensions": "11.463 x 10.180 x 7.964",
+        "usd_files": [
+          "alpine-chalet/unpacked/alpine-chalet.usdc"
+        ]
+      }
+    },
+    {
+      "id": "suburban-family-house",
+      "path": "assets/houses/suburban-family-house/suburban-family-house.usdc",
+      "source_units_m": 1.0,
+      "source_up_axis": "Y",
+      "bounds_z_up_m": [
+        [
+          -6.490000009536743,
+          -5.549999952316286,
+          -1.232347546746012e-15
+        ],
+        [
+          6.490000009536743,
+          5.549999952316284,
+          10.050829887390138
+        ]
+      ],
+      "size_xyz_m": [
+        12.980000019073486,
+        11.09999990463257,
+        10.05082988739014
+      ],
+      "source": {
+        "slug": "suburban-family-house",
+        "source_url": "https://grab3d.com/models/buildings/suburban-family-house/",
+        "license": "CC0-1.0",
+        "origin": {
+          "method": "procedural",
+          "detail": "Built procedurally with Blender scripts. The scripts were written with the help of an AI coding assistant. No generative AI model produced the geometry or textures directly.",
+          "ai_content": false,
+          "ai_assisted_code": true
+        },
+        "package_sha256": "5ff79367b0984b88f8201f40e810b058795192b840b10c1a9679a0daa3ce9185",
+        "source_dimensions": "12.980 x 11.100 x 10.051",
+        "usd_files": [
+          "suburban-family-house/unpacked/suburban-family-house.usdc"
+        ]
+      }
+    },
+    {
+      "id": "Japanese_Maple",
+      "path": "assets/nvidia/Trees/Japanese_Maple.usd",
+      "source_units_m": 0.009999999776482582,
+      "source_up_axis": "Z",
+      "bounds_z_up_m": [
+        [
+          -1.687162743050692,
+          -2.3777857439714865,
+          -0.00022172703843428843
+        ],
+        [
+          2.1066134172689885,
+          2.384288276785128,
+          3.4766127762955534
+        ]
+      ],
+      "size_xyz_m": [
+        3.7937761603196805,
+        4.762074020756614,
+        3.4768345033339876
+      ],
+      "source": {
+        "origin": "Existing Isaac asset pack; retain original NVIDIA terms",
+        "source_relative_path": "isaac-sim_assets/Trees/Japanese_Maple.usd"
+      }
+    },
+    {
+      "id": "Common_Apple",
+      "path": "assets/nvidia/Trees/Common_Apple.usd",
+      "source_units_m": 0.009999999776482582,
+      "source_up_axis": "Z",
+      "bounds_z_up_m": [
+        [
+          -3.106449210350604,
+          -2.691762329971141,
+          0.0
+        ],
+        [
+          2.7568328241221707,
+          2.541310978353522,
+          5.591296872095086
+        ]
+      ],
+      "size_xyz_m": [
+        5.863282034472775,
+        5.233073308324663,
+        5.591296872095086
+      ],
+      "source": {
+        "origin": "Existing Isaac asset pack; retain original NVIDIA terms",
+        "source_relative_path": "isaac-sim_assets/Trees/Common_Apple.usd"
+      }
+    },
+    {
+      "id": "Dogwood",
+      "path": "assets/nvidia/Trees/Dogwood.usd",
+      "source_units_m": 0.009999999776482582,
+      "source_up_axis": "Z",
+      "bounds_z_up_m": [
+        [
+          -1.6904648975178986,
+          -1.6140642949775383,
+          -0.0064083097932865485
+        ],
+        [
+          1.4260650316015244,
+          1.412245451832291,
+          3.4207231901424393
+        ]
+      ],
+      "size_xyz_m": [
+        3.116529929119423,
+        3.0263097468098294,
+        3.427131499935726
+      ],
+      "source": {
+        "origin": "Existing Isaac asset pack; retain original NVIDIA terms",
+        "source_relative_path": "isaac-sim_assets/Trees/Dogwood.usd"
+      }
+    },
+    {
+      "id": "Blue_Berry_Elder",
+      "path": "assets/nvidia/Trees/Blue_Berry_Elder.usd",
+      "source_units_m": 0.009999999776482582,
+      "source_up_axis": "Z",
+      "bounds_z_up_m": [
+        [
+          -2.263384501411366,
+          -1.8677491342779433,
+          -0.10911585563907344
+        ],
+        [
+          1.8223150227446467,
+          1.9326185175936246,
+          4.517645467870409
+        ]
+      ],
+      "size_xyz_m": [
+        4.085699524156013,
+        3.800367651871568,
+        4.626761323509482
+      ],
+      "source": {
+        "origin": "Existing Isaac asset pack; retain original NVIDIA terms",
+        "source_relative_path": "isaac-sim_assets/Trees/Blue_Berry_Elder.usd"
+      }
+    },
+    {
+      "id": "Japanese_Cherry",
+      "path": "assets/nvidia/Trees/Japanese_Cherry.usd",
+      "source_units_m": 0.009999999776482582,
+      "source_up_axis": "Z",
+      "bounds_z_up_m": [
+        [
+          -2.514321538038814,
+          -2.547490024846269,
+          0.0
+        ],
+        [
+          2.372562813180025,
+          3.1494667875140863,
+          4.641159869406522
+        ]
+      ],
+      "size_xyz_m": [
+        4.886884351218839,
+        5.696956812360355,
+        4.641159869406522
+      ],
+      "source": {
+        "origin": "Existing Isaac asset pack; retain original NVIDIA terms",
+        "source_relative_path": "isaac-sim_assets/Trees/Japanese_Cherry.usd"
+      }
+    },
+    {
+      "id": "Service_Berry",
+      "path": "assets/nvidia/Trees/Service_Berry.usd",
+      "source_units_m": 0.009999999776482582,
+      "source_up_axis": "Z",
+      "bounds_z_up_m": [
+        [
+          -5.032209360177603,
+          -2.8559880953433776,
+          -0.24885718743077234
+        ],
+        [
+          3.1005480264004746,
+          5.641839473504433,
+          8.904945479669891
+        ]
+      ],
+      "size_xyz_m": [
+        8.132757386578078,
+        8.49782756884781,
+        9.153802667100663
+      ],
+      "source": {
+        "origin": "Existing Isaac asset pack; retain original NVIDIA terms",
+        "source_relative_path": "isaac-sim_assets/Trees/Service_Berry.usd"
+      }
+    },
+    {
+      "id": "Black_Oak",
+      "path": "assets/nvidia/Trees/Black_Oak.usd",
+      "source_units_m": 0.009999999776482582,
+      "source_up_axis": "Z",
+      "bounds_z_up_m": [
+        [
+          -11.634245345423096,
+          -11.60966160573821,
+          0.0
+        ],
+        [
+          13.789838558960582,
+          12.457248256715047,
+          19.73891435372275
+        ]
+      ],
+      "size_xyz_m": [
+        25.42408390438368,
+        24.066909862453258,
+        19.73891435372275
+      ],
+      "source": {
+        "origin": "Existing Isaac asset pack; retain original NVIDIA terms",
+        "source_relative_path": "isaac-sim_assets/Trees/Black_Oak.usd"
+      }
+    }
+  ],
+  "instances": [
+    {
+      "id": "House_00",
+      "asset_id": "modern-house",
+      "xy_m": [
+        -20,
+        -18
+      ],
+      "yaw_deg": 0,
+      "bbox_world_m": [
+        [
+          -27.458579540252686,
+          -23.0,
+          0.05500000000000111
+        ],
+        [
+          -12.541420459747314,
+          -13.0,
+          7.855000190734865
+        ]
+      ]
+    },
+    {
+      "id": "House_01",
+      "asset_id": "japanese-house",
+      "xy_m": [
+        -43,
+        -20
+      ],
+      "yaw_deg": 12,
+      "bbox_world_m": [
+        [
+          -51.11652776999962,
+          -26.62848292015395,
+          0.055000000000001166
+        ],
+        [
+          -34.883472230000436,
+          -13.371517079846107,
+          5.799735717773439
+        ]
+      ]
+    },
+    {
+      "id": "House_02",
+      "asset_id": "suburban-family-house",
+      "xy_m": [
+        -20,
+        -44
+      ],
+      "yaw_deg": 180,
+      "bbox_world_m": [
+        [
+          -26.490000009536743,
+          -49.549999952316284,
+          0.055000000000001235
+        ],
+        [
+          -13.509999990463257,
+          -38.450000047683716,
+          10.105829887390138
+        ]
+      ]
+    },
+    {
+      "id": "House_03",
+      "asset_id": "alpine-chalet",
+      "xy_m": [
+        -44,
+        -45
+      ],
+      "yaw_deg": 90,
+      "bbox_world_m": [
+        [
+          -49.08979916572571,
+          -50.731345891952515,
+          0.055000000000001124
+        ],
+        [
+          -38.91020083427429,
+          -39.268654108047485,
+          8.018529109954835
+        ]
+      ]
+    },
+    {
+      "id": "House_04",
+      "asset_id": "japanese-house",
+      "xy_m": [
+        -20,
+        24
+      ],
+      "yaw_deg": 180,
+      "bbox_world_m": [
+        [
+          -27.181933879852295,
+          18.75,
+          0.055000000000001166
+        ],
+        [
+          -12.818066120147705,
+          29.25,
+          5.799735717773439
+        ]
+      ]
+    },
+    {
+      "id": "House_05",
+      "asset_id": "modern-house",
+      "xy_m": [
+        -43,
+        24
+      ],
+      "yaw_deg": 180,
+      "bbox_world_m": [
+        [
+          -50.458579540252686,
+          19.0,
+          0.05500000000000111
+        ],
+        [
+          -35.541420459747314,
+          29.0,
+          7.855000190734865
+        ]
+      ]
+    },
+    {
+      "id": "House_06",
+      "asset_id": "alpine-chalet",
+      "xy_m": [
+        -20,
+        48
+      ],
+      "yaw_deg": 0,
+      "bbox_world_m": [
+        [
+          -25.731345891952515,
+          42.91020083427429,
+          0.055000000000001124
+        ],
+        [
+          -14.268654108047485,
+          53.08979916572571,
+          8.018529109954835
+        ]
+      ]
+    },
+    {
+      "id": "House_07",
+      "asset_id": "suburban-family-house",
+      "xy_m": [
+        -45,
+        49
+      ],
+      "yaw_deg": 180,
+      "bbox_world_m": [
+        [
+          -51.49000000953674,
+          43.450000047683716,
+          0.055000000000001235
+        ],
+        [
+          -38.50999999046326,
+          54.549999952316284,
+          10.105829887390138
+        ]
+      ]
+    },
+    {
+      "id": "House_08",
+      "asset_id": "alpine-chalet",
+      "xy_m": [
+        21,
+        24
+      ],
+      "yaw_deg": 180,
+      "bbox_world_m": [
+        [
+          15.268654108047485,
+          18.910200834274292,
+          0.055000000000001124
+        ],
+        [
+          26.731345891952515,
+          29.089799165725708,
+          8.018529109954835
+        ]
+      ]
+    },
+    {
+      "id": "House_09",
+      "asset_id": "suburban-family-house",
+      "xy_m": [
+        43,
+        24
+      ],
+      "yaw_deg": 180,
+      "bbox_world_m": [
+        [
+          36.50999999046326,
+          18.450000047683716,
+          0.055000000000001235
+        ],
+        [
+          49.49000000953674,
+          29.549999952316284,
+          10.105829887390138
+        ]
+      ]
+    },
+    {
+      "id": "House_10",
+      "asset_id": "japanese-house",
+      "xy_m": [
+        43,
+        -20
+      ],
+      "yaw_deg": 0,
+      "bbox_world_m": [
+        [
+          35.818066120147705,
+          -25.25,
+          0.055000000000001166
+        ],
+        [
+          50.181933879852295,
+          -14.75,
+          5.799735717773439
+        ]
+      ]
+    },
+    {
+      "id": "House_11",
+      "asset_id": "modern-house",
+      "xy_m": [
+        43,
+        -44
+      ],
+      "yaw_deg": 90,
+      "bbox_world_m": [
+        [
+          38.0,
+          -51.458579540252686,
+          0.05500000000000111
+        ],
+        [
+          48.0,
+          -36.541420459747314,
+          7.855000190734865
+        ]
+      ]
+    },
+    {
+      "id": "Tree_00",
+      "asset_id": "Japanese_Maple",
+      "xy_m": [
+        -10,
+        -18
+      ],
+      "yaw_deg": 30.067387615290837,
+      "bbox_world_m": [
+        [
+          -12.787589586317797,
+          -20.995383324499524,
+          0.0
+        ],
+        [
+          -7.169386433238433,
+          -14.988987607223857,
+          3.4768345033339876
+        ]
+      ]
+    },
+    {
+      "id": "Tree_01",
+      "asset_id": "Common_Apple",
+      "xy_m": [
+        -31,
+        -9
+      ],
+      "yaw_deg": 62.05475083219068,
+      "bbox_world_m": [
+        [
+          -34.68528542772164,
+          -12.815980704989894,
+          0.0
+        ],
+        [
+          -27.314714572278326,
+          -5.184019295010096,
+          5.591296872095084
+        ]
+      ]
+    },
+    {
+      "id": "Tree_02",
+      "asset_id": "Dogwood",
+      "xy_m": [
+        -51,
+        -10
+      ],
+      "yaw_deg": 246.1721581538753,
+      "bbox_world_m": [
+        [
+          -53.01340931397009,
+          -12.036080393826882,
+          -1.734723475976807e-18
+        ],
+        [
+          -48.98629806223614,
+          -7.963257011218544,
+          3.4271314999357276
+        ]
+      ]
+    },
+    {
+      "id": "Tree_03",
+      "asset_id": "Blue_Berry_Elder",
+      "xy_m": [
+        -10,
+        -37
+      ],
+      "yaw_deg": 58.08948147900444,
+      "bbox_world_m": [
+        [
+          -12.692856402731108,
+          -39.73854951662123,
+          -2.7755575615628914e-17
+        ],
+        [
+          -7.3071435972688885,
+          -34.26145048337871,
+          4.626761323509481
+        ]
+      ]
+    },
+    {
+      "id": "Tree_04",
+      "asset_id": "Japanese_Cherry",
+      "xy_m": [
+        -34,
+        -36
+      ],
+      "yaw_deg": 341.7152482661099,
+      "bbox_world_m": [
+        [
+          -37.213751584192984,
+          -39.471261089379595,
+          0.0
+        ],
+        [
+          -30.786248415807005,
+          -32.52873891062041,
+          4.641159869406524
+        ]
+      ]
+    },
+    {
+      "id": "Tree_05",
+      "asset_id": "Service_Berry",
+      "xy_m": [
+        -51,
+        -36
+      ],
+      "yaw_deg": 303.9580878734271,
+      "bbox_world_m": [
+        [
+          -56.79566992088982,
+          -41.74622849980364,
+          -5.551115123125783e-17
+        ],
+        [
+          -45.26176793225492,
+          -30.318084289880527,
+          9.15380266710066
+        ]
+      ]
+    },
+    {
+      "id": "Tree_06",
+      "asset_id": "Japanese_Maple",
+      "xy_m": [
+        -33,
+        -55
+      ],
+      "yaw_deg": 267.25195466311635,
+      "bbox_world_m": [
+        [
+          -35.46851975927246,
+          -57.00886332668478,
+          0.0
+        ],
+        [
+          -30.533359763060076,
+          -52.99436027903686,
+          3.4768345033339876
+        ]
+      ]
+    },
+    {
+      "id": "Tree_07",
+      "asset_id": "Common_Apple",
+      "xy_m": [
+        -8,
+        -57
+      ],
+      "yaw_deg": 167.56043348391768,
+      "bbox_world_m": [
+        [
+          -11.426444339034976,
+          -60.186613946146885,
+          0.0
+        ],
+        [
+          -4.573555660965023,
+          -53.81338605385316,
+          5.5912968720950875
+        ]
+      ]
+    },
+    {
+      "id": "Tree_08",
+      "asset_id": "Dogwood",
+      "xy_m": [
+        -55,
+        -53
+      ],
+      "yaw_deg": 297.7222750484931,
+      "bbox_world_m": [
+        [
+          -57.064347701421376,
+          -55.08265393400127,
+          -3.469446951953614e-18
+        ],
+        [
+          -52.93598924927326,
+          -50.91670487570881,
+          3.427131499935725
+        ]
+      ]
+    },
+    {
+      "id": "Tree_09",
+      "asset_id": "Blue_Berry_Elder",
+      "xy_m": [
+        -10,
+        19
+      ],
+      "yaw_deg": 87.72224715085832,
+      "bbox_world_m": [
+        [
+          -11.979873240008004,
+          16.88324364009121,
+          0.0
+        ],
+        [
+          -8.020126759991985,
+          21.116756359908788,
+          4.626761323509482
+        ]
+      ]
+    },
+    {
+      "id": "Tree_10",
+      "asset_id": "Japanese_Cherry",
+      "xy_m": [
+        -32,
+        14
+      ],
+      "yaw_deg": 217.186376024166,
+      "bbox_world_m": [
+        [
+          -35.668273915548305,
+          10.253852162462204,
+          0.0
+        ],
+        [
+          -28.331726084451663,
+          17.74614783753778,
+          4.641159869406524
+        ]
+      ]
+    },
+    {
+      "id": "Tree_11",
+      "asset_id": "Service_Berry",
+      "xy_m": [
+        -54,
+        15
+      ],
+      "yaw_deg": 133.4054422978723,
+      "bbox_world_m": [
+        [
+          -59.81045611828262,
+          9.205184511113996,
+          -8.326672684688674e-17
+        ],
+        [
+          -48.11888553891659,
+          20.873931174643285,
+          9.15380266710066
+        ]
+      ]
+    },
+    {
+      "id": "Tree_12",
+      "asset_id": "Japanese_Maple",
+      "xy_m": [
+        -10,
+        39
+      ],
+      "yaw_deg": 176.5560120224282,
+      "bbox_world_m": [
+        [
+          -12.03649760278775,
+          36.512573687299415,
+          5.421010862427522e-20
+        ],
+        [
+          -7.967541491555009,
+          41.489912776137416,
+          3.4768345033339867
+        ]
+      ]
+    },
+    {
+      "id": "Tree_13",
+      "asset_id": "Common_Apple",
+      "xy_m": [
+        -34,
+        37
+      ],
+      "yaw_deg": 347.0209160815201,
+      "bbox_world_m": [
+        [
+          -37.44440612566049,
+          33.791876940683686,
+          0.0
+        ],
+        [
+          -30.555593874339515,
+          40.208123059316314,
+          5.591296872095086
+        ]
+      ]
+    },
+    {
+      "id": "Tree_14",
+      "asset_id": "Dogwood",
+      "xy_m": [
+        -55,
+        39
+      ],
+      "yaw_deg": 77.99004270981997,
+      "bbox_world_m": [
+        [
+          -56.804280480794475,
+          37.16098340494905,
+          -1.734723475976807e-18
+        ],
+        [
+          -53.19587023997358,
+          40.83830811498172,
+          3.4271314999357276
+        ]
+      ]
+    },
+    {
+      "id": "Tree_15",
+      "asset_id": "Blue_Berry_Elder",
+      "xy_m": [
+        -33,
+        60
+      ],
+      "yaw_deg": 271.71157682433255,
+      "bbox_world_m": [
+        [
+          -34.960352366086354,
+          57.90130652866519,
+          -2.7755575615628914e-17
+        ],
+        [
+          -31.039647633913606,
+          62.09869347133472,
+          4.626761323509484
+        ]
+      ]
+    },
+    {
+      "id": "Tree_16",
+      "asset_id": "Japanese_Cherry",
+      "xy_m": [
+        -9,
+        59
+      ],
+      "yaw_deg": 275.8964390950239,
+      "bbox_world_m": [
+        [
+          -12.08442480292081,
+          56.27685868684372,
+          0.0
+        ],
+        [
+          -5.915575197079189,
+          61.72314131315627,
+          4.64115986940652
+        ]
+      ]
+    },
+    {
+      "id": "Tree_17",
+      "asset_id": "Service_Berry",
+      "xy_m": [
+        -55,
+        61
+      ],
+      "yaw_deg": 31.474094154333446,
+      "bbox_world_m": [
+        [
+          -60.62641779363126,
+          55.25309287357309,
+          0.0
+        ],
+        [
+          -49.31346878607518,
+          66.69321973665882,
+          9.153802667100663
+        ]
+      ]
+    },
+    {
+      "id": "Tree_18",
+      "asset_id": "Japanese_Maple",
+      "xy_m": [
+        12,
+        16
+      ],
+      "yaw_deg": 357.3725259729484,
+      "bbox_world_m": [
+        [
+          9.999036961117167,
+          13.53522379791692,
+          -2.710505431213761e-20
+        ],
+        [
+          14.00404530518812,
+          18.463001866192418,
+          3.4768345033339876
+        ]
+      ]
+    },
+    {
+      "id": "Tree_19",
+      "asset_id": "Common_Apple",
+      "xy_m": [
+        32,
+        14
+      ],
+      "yaw_deg": 161.48313322182165,
+      "bbox_world_m": [
+        [
+          28.3891599103995,
+          10.587879381439087,
+          0.0
+        ],
+        [
+          35.61084008960049,
+          17.41212061856092,
+          5.591296872095086
+        ]
+      ]
+    },
+    {
+      "id": "Tree_20",
+      "asset_id": "Dogwood",
+      "xy_m": [
+        54,
+        14
+      ],
+      "yaw_deg": 195.64741903352723,
+      "bbox_world_m": [
+        [
+          52.092059023539925,
+          12.122828246257374,
+          1.734723475976807e-18
+        ],
+        [
+          55.908638467093695,
+          15.877367118976062,
+          3.427131499935725
+        ]
+      ]
+    },
+    {
+      "id": "Tree_21",
+      "asset_id": "Blue_Berry_Elder",
+      "xy_m": [
+        54,
+        34
+      ],
+      "yaw_deg": 108.7240247354066,
+      "bbox_world_m": [
+        [
+          51.544606544297665,
+          31.45528829759135,
+          0.0
+        ],
+        [
+          56.45539345570229,
+          36.54471170240863,
+          4.626761323509482
+        ]
+      ]
+    },
+    {
+      "id": "Tree_22",
+      "asset_id": "Japanese_Cherry",
+      "xy_m": [
+        33,
+        35
+      ],
+      "yaw_deg": 200.60915471887836,
+      "bbox_world_m": [
+        [
+          29.71029048070933,
+          31.47374448212743,
+          0.0
+        ],
+        [
+          36.28970951929063,
+          38.52625551787258,
+          4.64115986940652
+        ]
+      ]
+    },
+    {
+      "id": "Tree_23",
+      "asset_id": "Service_Berry",
+      "xy_m": [
+        11,
+        34
+      ],
+      "yaw_deg": 345.6292091057626,
+      "bbox_world_m": [
+        [
+          6.006295441119392,
+          28.87477639089633,
+          -8.326672684688674e-17
+        ],
+        [
+          15.965128536704285,
+          39.01369131454912,
+          9.15380266710066
+        ]
+      ]
+    },
+    {
+      "id": "Tree_24",
+      "asset_id": "Japanese_Maple",
+      "xy_m": [
+        12,
+        -8
+      ],
+      "yaw_deg": 125.65904449895216,
+      "bbox_world_m": [
+        [
+          8.959595416211878,
+          -10.885157341185653,
+          2.710505431213761e-20
+        ],
+        [
+          15.022219356910433,
+          -5.074508758901761,
+          3.4768345033339876
+        ]
+      ]
+    },
+    {
+      "id": "Tree_25",
+      "asset_id": "Common_Apple",
+      "xy_m": [
+        31,
+        -9
+      ],
+      "yaw_deg": 263.8854887502045,
+      "bbox_world_m": [
+        [
+          28.086082863465414,
+          -12.193665301035455,
+          0.0
+        ],
+        [
+          33.91391713653459,
+          -5.8063346989645375,
+          5.591296872095084
+        ]
+      ]
+    },
+    {
+      "id": "Tree_26",
+      "asset_id": "Dogwood",
+      "xy_m": [
+        55,
+        -10
+      ],
+      "yaw_deg": 282.3307361827991,
+      "bbox_world_m": [
+        [
+          53.188977105281054,
+          -11.8447512480648,
+          -1.734723475976807e-18
+        ],
+        [
+          56.8108682096272,
+          -8.154541126836067,
+          3.427131499935726
+        ]
+      ]
+    },
+    {
+      "id": "Tree_27",
+      "asset_id": "Blue_Berry_Elder",
+      "xy_m": [
+        54,
+        -34
+      ],
+      "yaw_deg": 312.6629477477057,
+      "bbox_world_m": [
+        [
+          51.21828703270226,
+          -36.78994038067815,
+          0.0
+        ],
+        [
+          56.78171296729773,
+          -31.210059619321875,
+          4.626761323509481
+        ]
+      ]
+    },
+    {
+      "id": "Tree_28",
+      "asset_id": "Japanese_Cherry",
+      "xy_m": [
+        33,
+        -34
+      ],
+      "yaw_deg": 248.73142776627404,
+      "bbox_world_m": [
+        [
+          29.459196023317777,
+          -37.31027749973336,
+          0.0
+        ],
+        [
+          36.54080397668217,
+          -30.689722500266573,
+          4.64115986940652
+        ]
+      ]
+    },
+    {
+      "id": "Tree_29",
+      "asset_id": "Service_Berry",
+      "xy_m": [
+        54,
+        -55
+      ],
+      "yaw_deg": 155.50423579238077,
+      "bbox_world_m": [
+        [
+          48.58565636015166,
+          -60.447731416960856,
+          0.0
+        ],
+        [
+          59.462081541959385,
+          -49.447496762046754,
+          9.153802667100663
+        ]
+      ]
+    },
+    {
+      "id": "Tree_30",
+      "asset_id": "Japanese_Maple",
+      "xy_m": [
+        9,
+        -38
+      ],
+      "yaw_deg": 122.05707866351052,
+      "bbox_world_m": [
+        [
+          5.97522450009299,
+          -40.825401261129024,
+          0.0
+        ],
+        [
+          12.008218530565205,
+          -35.13248629319964,
+          3.4768345033339867
+        ]
+      ]
+    },
+    {
+      "id": "Tree_31",
+      "asset_id": "Common_Apple",
+      "xy_m": [
+        22,
+        -43
+      ],
+      "yaw_deg": 138.3618235687392,
+      "bbox_world_m": [
+        [
+          18.070531217379738,
+          -46.90333684861155,
+          0.0
+        ],
+        [
+          25.929468782620287,
+          -39.09666315138851,
+          5.591296872095084
+        ]
+      ]
+    },
+    {
+      "id": "Tree_32",
+      "asset_id": "Dogwood",
+      "xy_m": [
+        12,
+        -55
+      ],
+      "yaw_deg": 134.55458630649903,
+      "bbox_world_m": [
+        [
+          9.828999987783307,
+          -57.17200413886603,
+          0.0
+        ],
+        [
+          14.171508197038621,
+          -52.828512009315496,
+          3.427131499935725
+        ]
+      ]
+    },
+    {
+      "id": "Tree_33",
+      "asset_id": "Blue_Berry_Elder",
+      "xy_m": [
+        35,
+        -57
+      ],
+      "yaw_deg": 318.9711836162648,
+      "bbox_world_m": [
+        [
+          32.211562118624975,
+          -59.77446500874049,
+          2.7755575615628914e-17
+        ],
+        [
+          37.78843788137498,
+          -54.22553499125956,
+          4.626761323509484
+        ]
+      ]
+    },
+    {
+      "id": "Tree_34",
+      "asset_id": "Japanese_Cherry",
+      "xy_m": [
+        12,
+        47
+      ],
+      "yaw_deg": 298.14543257246606,
+      "bbox_world_m": [
+        [
+          8.335746057262446,
+          43.50182774165012,
+          0.0
+        ],
+        [
+          15.664253942737567,
+          50.49817225834987,
+          4.641159869406522
+        ]
+      ]
+    },
+    {
+      "id": "Tree_35",
+      "asset_id": "Service_Berry",
+      "xy_m": [
+        22,
+        54
+      ],
+      "yaw_deg": 77.17725162654249,
+      "bbox_world_m": [
+        [
+          17.06683783265797,
+          49.09204612957226,
+          -5.551115123125783e-17
+        ],
+        [
+          27.045425740784616,
+          58.88240133924343,
+          9.153802667100667
+        ]
+      ]
+    },
+    {
+      "id": "Tree_36",
+      "asset_id": "Japanese_Maple",
+      "xy_m": [
+        31,
+        48
+      ],
+      "yaw_deg": 95.44085503879016,
+      "bbox_world_m": [
+        [
+          28.449830966962676,
+          45.900197113857416,
+          -5.421010862427522e-20
+        ],
+        [
+          33.547211215882854,
+          50.11225634139436,
+          3.4768345033339876
+        ]
+      ]
+    },
+    {
+      "id": "Tree_37",
+      "asset_id": "Common_Apple",
+      "xy_m": [
+        9,
+        61
+      ],
+      "yaw_deg": 15.903046638117754,
+      "bbox_world_m": [
+        [
+          5.463604295610203,
+          57.68030672862747,
+          0.0
+        ],
+        [
+          12.536395704389774,
+          64.3196932713725,
+          5.591296872095086
+        ]
+      ]
+    },
+    {
+      "id": "Tree_38",
+      "asset_id": "Dogwood",
+      "xy_m": [
+        40,
+        60
+      ],
+      "yaw_deg": 335.3162819203759,
+      "bbox_world_m": [
+        [
+          37.95221166702539,
+          57.974664024887744,
+          1.734723475976807e-18
+        ],
+        [
+          42.047130182978265,
+          62.02563846369189,
+          3.4271314999357276
+        ]
+      ]
+    },
+    {
+      "id": "Tree_39",
+      "asset_id": "Blue_Berry_Elder",
+      "xy_m": [
+        53,
+        51
+      ],
+      "yaw_deg": 21.34370210422677,
+      "bbox_world_m": [
+        [
+          50.40566709100794,
+          48.486623178265475,
+          0.0
+        ],
+        [
+          55.59433290899205,
+          53.513376821734525,
+          4.626761323509482
+        ]
+      ]
+    },
+    {
+      "id": "Tree_40",
+      "asset_id": "Black_Oak",
+      "xy_m": [
+        70,
+        48
+      ],
+      "yaw_deg": 17,
+      "bbox_world_m": [
+        [
+          54.325172091170344,
+          32.77570844253185,
+          0.0
+        ],
+        [
+          85.67482790882963,
+          63.22429155746815,
+          19.73891435372275
+        ]
+      ]
+    },
+    {
+      "id": "Tree_41",
+      "asset_id": "Black_Oak",
+      "xy_m": [
+        -75,
+        -25
+      ],
+      "yaw_deg": 120,
+      "bbox_world_m": [
+        [
+          -91.77729864183327,
+          -42.02567873018496,
+          0.0
+        ],
+        [
+          -58.22270135816666,
+          -7.974321269815005,
+          19.73891435372275
+        ]
+      ]
+    }
+  ],
+  "house_instances": 12,
+  "tree_instances": 42,
+  "pool": {
+    "water_size_wh_m": [
+      12,
+      7
+    ],
+    "center_xy_m": [
+      20,
+      -20
+    ],
+    "origin": "procedural static surface, no water dynamics"
+  },
+  "populated_region_xy_m": [
+    [
+      -90,
+      -70
+    ],
+    [
+      90,
+      75
+    ]
+  ],
+  "layout_note": "Fixed world coordinates; not derived from home, routes, labels or splits. Outer terrain is a visual buffer, not a populated navigation benchmark.",
+  "appearance": "Authored stylized houses, textured existing trees and procedural road/pool; not photogrammetry."
+}

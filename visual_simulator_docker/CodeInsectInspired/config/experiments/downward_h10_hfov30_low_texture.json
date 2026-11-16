@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "name": "downward_h10_hfov30_low_texture",
+  "purpose": "research",
+  "seed": 10,
+  "output_root": "runs",
+  "scene": {
+    "path": "maps/downward_flat_v1/low_texture.usda",
+    "ground_z_m": 0.0
+  },
+  "home": {
+    "ground_xy_m": [
+      0.0,
+      0.0
+    ]
+  },
+  "flight": {
+    "camera_height_agl_m": 10.0
+  },
+  "camera": {
+    "mode": "downward_pinhole",
+    "raw_resolution_wh": [
+      1024,
+      1024
+    ],
+    "hfov_deg": 30.0,
+    "fov_definition_confirmed": true,
+    "crop_box": null
+  },
+  "capture": {
+    "backend": "isaac",
+    "shape_flight": "bee",
+    "shape_params": [
+      5,
+      150,
+      0.35
+    ],
+    "number_cameras": 4,
+    "sample_count_policy": "exact",
+    "headings_per_position": 8
+  },
+  "training": {
+    "model_type": "attention",
+    "criterion": "MSELoss",
+    "optimizer": "AdamW",
+    "learning_rate": 0.0005,
+    "optimizer_kwargs": {
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0.01,
+      "amsgrad": false
+    },
+    "batch_size": 8,
+    "batch_size_val": 8,
+    "batch_size_eval": 8,
+    "epochs": 150,
+    "split_ratio": 0.95,
+    "augment": false,
+    "num_workers": 4
+  },
+  "evaluation": {
+    "radius_m": 10.0,
+    "radius_scales": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      2.5
+    ],
+    "points_per_radius": 16,
+    "max_steps": 50,
+    "success_radius_m": 1.2,
+    "step_rule": "legacy_norm_v1",
+    "max_step_m": 2.5,
+    "pitch_roll_deg": 0.0,
+    "north": false,
+    "fixed_yaw": false
+  },
+  "runtime": {
+    "headless": true,
+    "torch_num_threads": 2
+  },
+  "declared_changes": [
+    "Stage C uses a procedural 100 x 100 m flat terrain; downward capture awaits D/E.",
+    "Panorama horizontal-wrap augmentation is disabled for downward images.",
+    "Stage E exact sample accounting retains every position/heading pair, including partial camera batches.",
+    "Each isolated stage starts its own random generators at seed 10.",
+    "Stage C low_texture diagnostic ground; all training/controller settings match the distinct-ground configuration.",
+    "User confirmed stage D: HFOV30, 1024 square ideal pinhole, body-fixed level nadir, camera optical center 10 m above ground.",
+    "User approved per-pose RGB settling: two consecutive mean changes <=0.5/255, max90 updates, original 2 render subframes retained.",
+    "User selected stage E: 8 real headings per position, random initial yaw plus 45-degree increments, 147 positions and 1176 images; no panorama wrap."
+  ]
+}

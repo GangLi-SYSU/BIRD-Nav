@@ -19,6 +19,11 @@ def load_config(config_file):
     with open(config_file, 'r') as file:
         return json.load(file)
 
+def create_downward_capture_camera(config, my_world, name="DownwardCapture"):
+    """Production capture-camera factory, also used by stage D calibration."""
+    from insect_utils.downward_camera import DownwardCamera
+    return DownwardCamera(config['camera'], my_world, 'replicator', name)
+
 # TODO: this should go to utils:
 def get_locations_path(map_path):
     # find '_area' in the map_path:
@@ -63,9 +68,19 @@ def load_landmark_locations(locations_path):
 
 def generate_dataset(config, simulation_app=None, my_world = None, show_positions = False):
 
-    with open("config/server.json", 'r') as file:
-        options = json.load(file)
-    server = options['server']
+    if config.get('camera', {}).get('mode') == 'downward_pinhole':
+        if simulation_app is None:
+            raise ValueError(
+                'Use the isolated run_downward_homing.py capture worker for downward datasets'
+            )
+        from insect_utils.downward_capture import capture_dataset
+        return capture_dataset(config, my_world)
+
+    server = config.get('headless')
+    if server is None:
+        with open("config/server.json", 'r') as file:
+            options = json.load(file)
+        server = options['server']
 
     if simulation_app is None:
         simulation_app = SimulationApp({"headless": server})

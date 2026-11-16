@@ -5,6 +5,7 @@ __pycache__/
 dist/
 build/
 *.egg
+.venv/
 
 # OS
 .DS_Store
@@ -26,9 +27,45 @@ visual_simulator_docker/isaac-sim_assets/
 # Generated simulation data
 visual_simulator_docker/CodeInsectInspired/forest/
 visual_simulator_docker/CodeInsectInspired/cars/
+visual_simulator_docker/CodeInsectInspired/baselines/
+visual_simulator_docker/CodeInsectInspired/runs/
+visual_simulator_docker/CodeInsectInspired/maps/downward_flat_v*/
+visual_simulator_docker/CodeInsectInspired/maps/downward_landmarks_v*/
 
 # Core dumps
 core.*
 
 # Environment files with local paths
 *.env.local
+
+# Reproducible inputs are fetched/generated as documented in docs/REPRODUCTION_RESOURCES.md.
+visual_simulator_docker/CodeInsectInspired/maps/downward_real_h40_v*/
+path_integration_noise_simulation/magnetic_guidance/runs/
+
+# Local container state and cached downloads; keep the downloader source scripts.
+visual_simulator_docker/downloads/docker-disk/
+visual_simulator_docker/downloads/*.tar
+visual_simulator_docker/downloads/*.oci/
+visual_simulator_docker/downloads/.parts/
+
+# Eagle source archives and conversion diagnostics; keep the runtime USD dependencies.
+visual_simulator_docker/CodeInsectInspired/assets/birds/quaternius_eagle/source_pack.zip
+visual_simulator_docker/CodeInsectInspired/assets/birds/quaternius_eagle/*.blend
+visual_simulator_docker/CodeInsectInspired/assets/birds/quaternius_eagle/*.fbx
+visual_simulator_docker/CodeInsectInspired/assets/birds/quaternius_eagle/*.obj
+visual_simulator_docker/CodeInsectInspired/assets/birds/quaternius_eagle/*.mtl
+visual_simulator_docker/CodeInsectInspired/assets/birds/quaternius_eagle/eagle_flatten.usda
+visual_simulator_docker/CodeInsectInspired/assets/birds/quaternius_eagle/inspection.*
+visual_simulator_docker/CodeInsectInspired/assets/birds/quaternius_eagle/*.log
+visual_simulator_docker/CodeInsectInspired/assets/birds/quaternius_eagle/author_page.html
+
+# User credentials and machine-specific state.
+.aws/
+.codex/
+.agents/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+**/.thumbs/

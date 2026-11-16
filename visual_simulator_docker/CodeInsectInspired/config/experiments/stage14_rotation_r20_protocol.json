@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "purpose": "paired_circular_rotation_navigation_at_20m_only",
+  "authorization": "User selected mask_only plus mask_rotation training and navigation comparison, limited to 20m initial radius before considering wider tests.",
+  "training_run": "runs/stage13_circular_01",
+  "training_fingerprint": "cd1062740236ad4ce4f222bbd13c980fd6b977ad699ced50473b498775b63e21",
+  "arms": ["mask_only", "mask_rotation"],
+  "model_selection": "Use each arm's validation-best epoch after both 150-epoch training arms finish and selection is frozen. Test both arms regardless of which has lower validation MSE. No navigation-based checkpoint selection.",
+  "scene": "maps/downward_real_h40_v1/real_scene.usda",
+  "home_camera_xyz_m": [0.0, 0.0, 40.0],
+  "ground_z_m": 0.0,
+  "camera": {"mode": "downward_pinhole", "raw_resolution_wh": [1024, 1024], "hfov_deg": 70.0, "fov_definition_confirmed": true, "crop_box": null},
+  "controller": {"success_radius_m": 0.5, "max_steps": 50, "step_offset_m": 0.1, "step_gain": 0.13333333333333333, "max_step_m": 2.5, "minimum_prediction_norm_m": 0.000001, "fixed_yaw": false},
+  "formal": {"radii_m": [20], "bearings_per_radius": 16, "initial_yaws_deg": [0, 90, 180, 270]},
+  "rendered_oracle": {"radii_m": [20], "bearings_per_radius": 4, "initial_yaws_deg": [45]},
+  "runtime": {"headless": true, "camera_count": 4, "model_device": "cpu", "torch_num_threads": 2, "seed": 10, "safety_margin_m": 5.0},
+  "success_definition": "After the executed kinematic action endpoint reaches simulator-truth horizontal distance<=0.5m, terminate successfully; otherwise fail after50 actions. Segment crossing is diagnostic only.",
+  "supervision": "Neural decisions receive raw RGB only; the exported graph owns resize and fixed circular mask, with no random inference rotation. Truth is used for evaluation and boundary/pose checks only, apart from separately labelled engineering oracle runs.",
+  "execution": "Finish both training arms first. Use one Isaac application at a time. Run identical20m oracle and live model checks, then64 neural trials for mask_only and64 for mask_rotation. Record all frames and trajectories. No5/10/30/40m navigation or static held-out-test evaluation in this experiment.",
+  "limits": "Same scene, one training seed and one run per matched starting pose; heading/nearby footprints are correlated. A positive success-rate difference is preliminary evidence at20m only, not a reliability guarantee or validation of hovering, autonomous home recognition or real flight dynamics."
+}

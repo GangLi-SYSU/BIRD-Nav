@@ -13,7 +13,14 @@ from insect_utils.flight_path_functions import rotate_vector_by_yaw
 import numpy as np
 import json
 import pickle
+import hashlib
 from data_loader import augment_image_vector, show_image_and_target
+
+def parameter_digest(model):
+    value = hashlib.sha256()
+    for parameter in model.parameters():
+        value.update(parameter.detach().cpu().contiguous().numpy().tobytes())
+    return value.hexdigest()
 
 def train_log(loss, example_ct, epoch):
     # Where the magic happens
@@ -23,6 +30,10 @@ def train_log(loss, example_ct, epoch):
 
 
 def train(model, loader, val_loader, criterion, optimizer, config, plot_graphs = False):
+
+    metrics_path = config.get('training_log_path')
+    initial_digest = parameter_digest(model) if metrics_path else None
+    epoch_losses = []
 
     # Is the model using the GPU?
     if torch.cuda.is_available():
@@ -51,6 +62,7 @@ def train(model, loader, val_loader, criterion, optimizer, config, plot_graphs =
     val_ct = 0
     validation_losses = []
     for epoch in tqdm(range(config['epochs'])):
+        epoch_total = 0.0
         for _, (images, labels) in enumerate(loader):
 
             if CUDA:
@@ -58,6 +70,11 @@ def train(model, loader, val_loader, criterion, optimizer, config, plot_graphs =
                 labels = labels.cuda()
                 
             loss = train_batch(images, labels, model, optimizer, criterion)
+            if metrics_path:
+                numeric_loss = loss.item()
+                if not np.isfinite(numeric_loss):
+                    raise ValueError('Training loss is not finite')
+                epoch_total += numeric_loss * len(images)
             example_ct +=  len(images)
             batch_ct += 1
 
@@ -80,6 +97,9 @@ def train(model, loader, val_loader, criterion, optimizer, config, plot_graphs =
                     print(f"Validation loss after {str(example_ct).zfill(5)} examples: {val_loss:.3f}")
                     validation_losses.append(val_loss)
                     val_ct += 1
+
+        if metrics_path:
+            epoch_losses.append(epoch_total / len(loader.dataset))
     
     # plot the validation losses, save as figure and add to wandb:
     if plot_graphs:
@@ -98,24 +118,43 @@ def train(model, loader, val_loader, criterion, optimizer, config, plot_graphs =
     # torch.save(model, "model.pt")
 
     # Create models folder if it doesn't exist
-    models_folder = "models"
+    models_folder = config.get('models_folder', "models")
     os.makedirs(models_folder, exist_ok=True)
 
     # Save the model as a path file:
     # check how many models already exist with the appropriate name:
     existing_files = [f for f in os.listdir(models_folder) if f.startswith("model" + config["model_suffix"]) and f.endswith('.pth')]
     n_existing_files = len(existing_files)
-    if n_existing_files > 0:
+    if 'model_name' in config:
+        model_name = config['model_name']
+    elif n_existing_files > 0:
         model_name = "model" + config["model_suffix"] + "_" + str(n_existing_files)
     else:
         model_name = "model" + config["model_suffix"]
     # Save the model:
     model_path = os.path.join(models_folder, model_name + ".pth")
-    torch.save(model.state_dict(), model_path)
+    pending_model = model_path + '.tmp' if 'model_name' in config else model_path
+    torch.save(model.state_dict(), pending_model)
+    if pending_model != model_path:
+        os.replace(pending_model, model_path)
 
     # Save the model in the exchangeable ONNX format
     onnx_path = os.path.join(models_folder, model_name + ".onnx")
-    torch.onnx.export(model, images, onnx_path)
+    pending_onnx = onnx_path + '.tmp' if 'model_name' in config else onnx_path
+    torch.onnx.export(model, images, pending_onnx)
+    if pending_onnx != onnx_path:
+        os.replace(pending_onnx, onnx_path)
+
+    if metrics_path:
+        final_digest = parameter_digest(model)
+        metrics = {'epochs_completed': config['epochs'], 'optimizer_steps': batch_ct,
+                   'samples_seen': example_ct, 'epoch_losses': epoch_losses,
+                   'validation_losses': validation_losses, 'optimizer_defaults': optimizer.defaults,
+                   'initial_parameter_sha256': initial_digest, 'final_parameter_sha256': final_digest,
+                   'parameters_changed': initial_digest != final_digest, 'cuda_used': CUDA}
+        with open(metrics_path + '.tmp', 'w') as stream:
+            json.dump(metrics, stream, indent=2, allow_nan=False)
+        os.replace(metrics_path + '.tmp', metrics_path)
     # if wandb.run is not None:
     #     wandb.save(onnx_path)
 
@@ -192,6 +231,11 @@ def test(model, test_loader, criterion, graphics = False):
 
 def evaluate(model, train_loader, position_map, rotation_map, noisy_position_map, target_map, train_indices, n_samples = 500, append_name = ''):
 
+    if getattr(train_loader.dataset, 'config', {}).get('camera_mode') == 'downward_pinhole':
+        from insect_utils.downward_data import evaluate_prepared
+        return evaluate_prepared(model, train_loader.dataset.config, 'train',
+                                 graphics=True, limit=n_samples)
+
      # Run the model on all images in the dataset, storing the resulting predictions:
     predictions = []
     model.eval()
@@ -242,6 +286,11 @@ def evaluate(model, train_loader, position_map, rotation_map, noisy_position_map
     insect_utils.plot_utils.make_nice_plot(predictions, position_map, rotation_map, ground_truths, noisy_position_map, append_name = append_name, config = config)
 
 def evaluate_on_dataset(model, data_folder, image_folder, csv_filename, load_indices = False, config = None, evaluation_set='test', augment = False, graphics = False, append_name_evaluation_figure=''):
+
+    if config is not None and config.get('camera_mode') == 'downward_pinhole':
+        from insect_utils.downward_data import evaluate_dataset_arguments
+        return evaluate_dataset_arguments(model, data_folder, image_folder, csv_filename,
+                                          config, evaluation_set, augment, graphics)
 
     # load the dataset:
     filenames, target_x, target_y, position_map, rotation_map, target_map, noisy_position_map, noisy_rotation_map, noisy_target_map =  \

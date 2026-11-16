@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "authorization": "User requested another15m experiment,each trial must execute50 actions regardless of arrival,then measure final distance and draw labelled radius circles.",
+  "source_navigation_run": "runs/stage24_radius15_01",
+  "source_navigation_fingerprint": "daa7cca0e83f066d62d564163fac1e55c4ffa04a78109400acd925a10c0d5045",
+  "selected_epoch": 484,
+  "formal_trials": 64,
+  "horizon_actions": 50,
+  "distance_based_termination": false,
+  "scoring_radii_m": [0.5, 1, 2, 3, 5, 10, 15, 20],
+  "overview_rings_m": [5, 10, 15, 20],
+  "near_home_rings_m": [0.5, 1, 2, 3, 5],
+  "change": "Only disable arrival-based stopping and enforce exactly50 model-controlled actions. Preserve the same64 starting poses,model,camera,scene,yaw update and dynamic step rule. Do not introduce hovering,oracle corrections or truth-based step clipping.",
+  "engineering": "Reuse verified source15m rendered-oracle and model/camera IO receipts for the identical scene and model; separately test fixed-horizon termination and scoring in pure geometry. Invalid frames or predictions are recorded as engineering exceptions,never padded to50 actions.",
+  "reporting": "Report final distance at action50,minimum visited endpoint distance,first entry into2m,last10 endpoint distances,and counts within each final-radius band. Distinguish ever entering2m from ending inside2m.",
+  "limits": "Single scene and seed,kinematic camera proxy. Action50 endpoint is not a measured physical hover equilibrium. Repeated rendering can change trajectories; the old arrival-stopped trial and this trial share starting poses but are separate runs. No model selection or training uses these results."
+}
