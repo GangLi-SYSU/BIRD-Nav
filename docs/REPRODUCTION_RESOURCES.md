@@ -160,7 +160,7 @@ bash visual_simulator_docker/disk_docker.sh docker logs -f bee-nav-stage23-compa
 输出全部位于 `CodeInsectInspired/runs/reproduce_compact20_01/`，包含冻结输入、采集清单、
 模型、日志、导航结果和报告。预留图像只用于离线评价；闭环导航实时渲染相机。
 从源码重新渲染训练可以复现实验流程，但不同 GPU/库/素材版本可能改变像素、最佳轮次和指标。
-参考结果见[仓库首页](../README.md)，完整数值见[参考指标](results/reference_metrics.json)。
+参考结果见[仓库首页](../README.md)，完整数值见[参考指标](reference_metrics.json)。
 
 ## 6. 运行交互演示与纯 CPU 路径积分实验
 

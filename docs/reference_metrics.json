@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "reference_model": {
+    "selected_epoch": 484,
+    "torchscript_sha256": "31ded9f200a9538d1358cd7e331c001dbd746d97263a532793f0e633f5f48119",
+    "demo_config": "visual_simulator_docker/CodeInsectInspired/config/experiments/demo_release.json"
+  },
+  "visual_standard": {
+    "height_agl_m": 40,
+    "square_fov_deg": 30,
+    "learning_radius_m": 20,
+    "seed": 10,
+    "success_radius_m": 2,
+    "max_steps": 50,
+    "termination": "first executed action endpoint within 2 m, otherwise timeout",
+    "by_radius": {
+      "10": {
+        "episodes": 64,
+        "successes": 64,
+        "success_rate": 1.0,
+        "final_distance_m": {
+          "mean": 1.840174804560666,
+          "p50": 1.8807461199335487,
+          "p90": 1.9750173477231692,
+          "p95": 1.9922339858966625
+        },
+        "termination_reasons": {
+          "success": 64
+        }
+      },
+      "15": {
+        "episodes": 64,
+        "successes": 59,
+        "success_rate": 0.921875,
+        "final_distance_m": {
+          "mean": 2.351192902321497,
+          "p50": 1.8697249392281647,
+          "p90": 1.9852455226443837,
+          "p95": 4.468805544615482
+        },
+        "termination_reasons": {
+          "success": 59,
+          "timeout": 5
+        }
+      },
+      "20": {
+        "episodes": 64,
+        "successes": 54,
+        "success_rate": 0.84375,
+        "final_distance_m": {
+          "mean": 6.773120895885398,
+          "p50": 1.860010174282048,
+          "p90": 25.054242816212216,
+          "p95": 39.5097669418731
+        },
+        "termination_reasons": {
+          "success": 54,
+          "timeout": 10
+        }
+      }
+    }
+  },
+  "visual_fixed50_15m": {
+    "initial_radius_m": 15,
+    "distance_based_termination": false,
+    "summary": {
+      "episodes": 64,
+      "completed50": 64,
+      "aborted": 0,
+      "termination_reasons": {
+        "fixed50_complete": 64
+      },
+      "horizon_actions": 50,
+      "distance_based_termination": false,
+      "final_distance_m": {
+        "mean": 0.8394755109628624,
+        "p50": 0.6176634763612998,
+        "p90": 1.1869582966439536,
+        "p95": 1.5085845535855131,
+        "minimum": 0.23696640935901553,
+        "maximum": 9.920095944025379,
+        "rms": 1.4603999740585645
+      },
+      "minimum_endpoint_distance_m": {
+        "mean": 0.4553348914253797,
+        "p50": 0.20877307144880575,
+        "p90": 0.9539481602770659,
+        "p95": 1.1641033009072792
+      },
+      "ever_entered_2m": 63,
+      "final_within_2m": 63,
+      "entered_then_outside_2m_at_end": 0,
+      "final_within_radius": {
+        "0.5": {
+          "count": 20,
+          "rate": 0.3125
+        },
+        "1": {
+          "count": 51,
+          "rate": 0.796875
+        },
+        "2": {
+          "count": 63,
+          "rate": 0.984375
+        },
+        "3": {
+          "count": 63,
+          "rate": 0.984375
+        },
+        "5": {
+          "count": 63,
+          "rate": 0.984375
+        },
+        "10": {
+          "count": 64,
+          "rate": 1.0
+        },
+        "15": {
+          "count": 64,
+          "rate": 1.0
+        },
+        "20": {
+          "count": 64,
+          "rate": 1.0
+        }
+      },
+      "final_position_mean_xy_m": [
+        0.5927441427407926,
+        0.23431968958624294
+      ],
+      "last10_mean_distance_m": {
+        "mean": 0.8586075746211904,
+        "p50": 0.5579010510349263,
+        "p90": 1.323416871505265,
+        "p95": 1.6307956064166562
+      },
+      "last10_max_distance_m": {
+        "mean": 1.1787437789071493,
+        "p50": 0.8326019140621135,
+        "p90": 1.8420050853714038,
+        "p95": 2.123923243169538
+      }
+    }
+  },
+  "path_integration_2000m": {
+    "config": {
+      "distances_m": [
+        2000
+      ],
+      "distance_noise_m_per_sqrt_m": [
+        0.1
+      ],
+      "routes": [
+        "dogleg"
+      ],
+      "trials": 1000,
+      "trial_start": 0,
+      "seed": 20261106,
+      "delta_t_s": 0.5,
+      "outbound_speed_m_s": 2.5,
+      "return_speed_m_s": 4,
+      "gyro_noise_deg_per_sqrt_s": 0.63,
+      "success_radius_m": 15
+    },
+    "nominal_outbound_length_m": 4000,
+    "nominal_return_length_m": 2000,
+    "summary": [
+      {
+        "arm": "magnetic",
+        "trials": 1000,
+        "successes": 977,
+        "success_rate": 0.977,
+        "ci95_low": 0.9657235493377733,
+        "ci95_high": 0.9846257230670071,
+        "mean_error_m": 6.676625217560323,
+        "median_error_m": 6.16920902109228,
+        "p95_error_m": 13.517908315448006,
+        "return_r99_m": 16.82046894888959,
+        "maximum_error_m": 26.44685407156936,
+        "outbound_r99_m": 2010.0031488232005,
+        "area_ratio_percent": 0.007002977381850224
+      },
+      {
+        "arm": "gyro_only",
+        "trials": 1000,
+        "successes": 2,
+        "success_rate": 0.002,
+        "ci95_low": 0.000548643588120728,
+        "ci95_high": 0.007262807863492177,
+        "mean_error_m": 597.6311197484912,
+        "median_error_m": 502.75219651857344,
+        "p95_error_m": 1395.3970706403886,
+        "return_r99_m": 1732.5317336349783,
+        "maximum_error_m": 2667.282369724471,
+        "outbound_r99_m": 2614.207193397321,
+        "area_ratio_percent": 43.92202809248518
+      }
+    ]
+  },
+  "scope": "Single-scene, single-training-seed kinematic simulations. PI 15 m eligibility and visual success are separate evaluations, not a measured end-to-end real-flight success rate."
+}
