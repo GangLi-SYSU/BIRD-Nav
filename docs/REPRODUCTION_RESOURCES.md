@@ -1,7 +1,7 @@
 # 复现资源与操作指南
 
-本指南对应 BIRD-Nav 当前的下视视觉归巢与两阶段 demo。所有相对路径以仓库根目录为准，
-不是父级 workspace。原 Bee-Nav 的全景视觉、机载机器人实验仍按各子目录 README 操作。
+本指南对应 BIRD-Nav 的下视视觉归巢与两阶段交互演示，所有相对路径以仓库根目录为准。
+原 Bee-Nav 的全景视觉、机载机器人实验按各自子目录说明操作。
 
 ## 1. 哪些文件随代码提供
 
@@ -16,9 +16,9 @@ visual_simulator_docker/CodeInsectInspired/assets/models/stage23_epoch484/
   SHA256SUMS
 ```
 
-三个模型文件合计约 1.32 MiB，复制自 Stage23 的验证集最佳 epoch 484。
+三个模型文件合计约 1.32 MiB，对应验证集最佳的第 484 轮。
 `config/experiments/demo_release.json` 保存对应相机/控制器设置及模型哈希；
-demo 不再读取历史训练目录。可在模型目录运行 `sha256sum -c SHA256SUMS` 验证。
+演示从该配置加载参考模型。可在模型目录运行 `sha256sum -c SHA256SUMS` 验证。
 鸟模型的运行 USD、绑定/动画依赖和许可保留在 `assets/birds/quaternius_eagle/`；
 原始 FBX、Blender 工程、下载压缩包和转换诊断不需要重复上传。
 
@@ -30,9 +30,9 @@ demo 不再读取历史训练目录。可在模型目录运行 `sha256sum -c SHA
 | 原项目素材 `visual_simulator_docker/isaac-sim_assets/` | 2.4 GiB | [上游 SURFdrive](https://surfdrive.surf.nl/s/qardanQkDLwe7m2)，下载并保留完整目录层级 |
 | 四种 Grab3D 房屋及纹理 | 数 MiB | 下节列出 USDZ、许可与清单的下载方法 |
 | 生成的 `maps/downward_real_h40_v1/` | 375 MiB | 从上述素材运行场景生成器；目前没有预生成场景包的公开下载地址 |
-| Stage23 `capture/` | 约 1018 MiB | 147 个螺旋位置 × 8 航向，共 1,176 张图像；目前没有历史图像包的公开下载地址，按第 5 节重新采集 |
+| 采集图像 `capture/` | 约 1018 MiB | 147 个螺旋位置 × 8 航向，共 1,176 张图像；目前没有预采集图像包的公开下载地址，按第 5 节采集 |
 
-SURFdrive 链接沿用上游 README，本次整理未重新下载验证。素材解压后应直接存在
+SURFdrive 链接由上游项目提供。素材解压后应直接存在
 `isaac-sim_assets/Trees/` 和 `isaac-sim_assets/Grass_Countryside/`，避免多套一层目录。
 保留 NVIDIA 素材原有条款。原项目的机器人训练数据只用于相应机器人实验，
 下载入口见 [robot_network_training/README.md](../robot_network_training/README.md)。
@@ -62,7 +62,6 @@ BEE_NAV_PIP_INDEX_URL=https://pypi.org/simple bash build_on_disk.sh
 原始镜像的本地记录摘要为
 `sha256:b606646df3aab3f38ba655ce96cdf8f45a13bb167f01c4b2992e40d6f2900089`；
 需要核对时用 `bash disk_docker.sh docker image inspect nvcr.io/nvidia/isaac-sim:4.2.0` 查看 RepoDigests。
-Git 中的历史下载器不作为首次安装入口；部分下载器依赖未随代码分发的下载状态文件。
 
 ## 4. 下载房屋并重建真实场景
 
@@ -125,7 +124,7 @@ bash disk_docker.sh docker run --rm --network none \
 
 输出为 `CodeInsectInspired/maps/downward_real_h40_v1/real_scene.usda` 及完整资产依赖。
 生成器保留房屋/树木实际尺寸，生成地面、水池与道路，拒绝覆盖已有场景。
-`config/resources/real_scene_reference.manifest.json` 保存历史参考场景的资产哈希、布局和来源；
+`config/resources/real_scene_reference.manifest.json` 保存参考场景的资产哈希、布局和来源；
 重建后可与输出 `real_scene.manifest.json` 对照。
 
 ## 5. 重新采集、训练和测试
@@ -152,7 +151,7 @@ bash visual_simulator_docker/disk_docker.sh docker logs -f bee-nav-stage23-compa
 固定协议为 `CodeInsectInspired/config/experiments/stage23_compact_spiral_protocol.json`：
 
 - 40 m AGL、30° 方形下视相机、1024×1024 RGB，模型内缩放为 384×384。
-- 20 m 半径内约五圈螺旋，147 个位置、各八个航向；无额外近家网格。
+- 20 m 半径内约五圈螺旋，147 个位置、各八个航向。
 - 按位置分组：133/6/8 个训练/验证/预留测试位置，分别为 1064/48/64 张图。
 - 训练时随机旋转图像及标签、固定圆形掩膜；验证与部署不随机旋转。
 - 随机种子 10，AdamW、学习率 0.0005、batch 8、600 轮，米制标签归一化尺度 44 m。
@@ -161,10 +160,9 @@ bash visual_simulator_docker/disk_docker.sh docker logs -f bee-nav-stage23-compa
 输出全部位于 `CodeInsectInspired/runs/reproduce_compact20_01/`，包含冻结输入、采集清单、
 模型、日志、导航结果和报告。预留图像只用于离线评价；闭环导航实时渲染相机。
 从源码重新渲染训练可以复现实验流程，但不同 GPU/库/素材版本可能改变像素、最佳轮次和指标。
-如果需要逐像素重用本机历史数据，应另行发布原始 `capture/`、清单与校验和；
-在该资源包实际发布前，本仓库不声称提供历史图像下载或逐位一致的训练复现。
+参考结果见[仓库首页](../README.md)，完整数值见[参考指标](results/reference_metrics.json)。
 
-## 6. 运行 demo 与纯 CPU 路径积分实验
+## 6. 运行交互演示与纯 CPU 路径积分实验
 
 场景准备完成后，在桌面终端、仓库根目录运行：
 
@@ -172,7 +170,7 @@ bash visual_simulator_docker/disk_docker.sh docker logs -f bee-nav-stage23-compa
 bash visual_simulator_docker/run_interactive_homing_demo.sh
 ```
 
-demo 默认使用随 Git 提供的 epoch 484 参考模型，与新训练输出相互独立。
+演示默认使用随 Git 提供的第 484 轮参考模型，与训练输出相互独立。
 如需部署新模型，单独准备配置，设置模型路径和正确 SHA256，并通过 `--demo-config` 传入；
 同时核对相机和控制器协议。切换模型不会自动发生。
 `T` 起飞，`W/A/S/D` 平移，`Q/E` 转向，`H` 归巢，空格暂停，`R` 重置，`V` 恢复面板。
@@ -189,10 +187,8 @@ cd path_integration_noise_simulation/magnetic_guidance
 
 配置定义距离、噪声、试验次数等；详见该目录 README。大规模轨迹输出由脚本生成。
 
-## 7. 不上传的内容
+## 7. 资源存储与输出
 
-`.gitignore` 排除 Docker 磁盘/归档、下载缓存、生成地图、所有历史视觉实验 `runs/`、
-路径积分实验输出、Python 缓存及本机私有配置。历史导航截图、视频、失败/中间模型和旧场景
-不属于当前复现的必需输入。文件继续留在原硬盘，此规则不会删除本地数据。
-不要用 `git add -f` 强行纳入这些目录。需要归档的选定数据以后可放实验室共享盘或独立数据发布，
-并在本指南补入真实下载地址、版本、解压位置和 SHA256。
+`.gitignore` 排除 Docker 磁盘/归档、下载缓存、生成地图、实验 `runs/`、Python 缓存及本机私有配置。
+图像、检查点、轨迹与视频均写入本地输出目录，由上述流程生成。
+代码仓库提供参考模型和汇总指标；第三方大素材由原始来源下载。

@@ -1,100 +1,46 @@
-# Isaac Sim framework for honeybee-inspired robot navigation
+# 下视视觉归巢代码
 
-This folder provides the simulation framework built around **Isaac Sim** that accompanies the Nature paper *"Efficient robot navigation inspired by honeybee learning flights"*. The framework supports:
+本目录实现图像采集、注意力网络训练、视觉导航控制和两阶段演示。
+环境安装与素材准备见[复现指南](../../docs/REPRODUCTION_RESOURCES.md)，
+最终实验结果见[仓库首页](../../README.md)。
 
-- Rapid dataset generation.
-- Creation of outdoor virtual environments.
-- Simulation of the homing process using virtual cameras and drones.
-- Analysis of neural network performance for visual navigation tasks.
+## 最终实验设置
 
-The current custom experiment compresses the same147 spiral sampling positions
-into a20m radius at40m altitude and30° FOV, followed by600 training epochs and
-10m/20m navigation tests with a2m success radius.
-See [configuration, commands and live results](docs/compact20_spiral_experiment.md).
-An additional [15m navigation test](docs/radius15_test.md) uses the same selected
-model and2m success radius, with no new training.
-The [fixed50-action15m test](docs/fixed50_test.md) continues after entering the2m
-area and measures the final endpoint, with labelled distance circles and live paths.
+- 相机离地 40 m、垂直下视、30° 方形视场，输出 1024×1024 RGB。
+- 半径 20 m 内的螺旋轨迹包含 147 个采样位置，每位置八个航向；按位置划分训练、验证和预留测试。
+- 网络输入为 384×384，10,628 个参数；训练使用随机旋转、同步向量标签及固定圆形掩膜。
+- AdamW、学习率 0.0005、批大小 8、600 轮；归巢向量的归一化尺度为 44 m。
+- 标准导航在首次进入 2 m 后停止，最多 50 步，按网络预测距离缩短步长。
 
-The code was tested on a 12th Gen Intel(R) Core(TM) i9-12900HK 2.50 GHz, with 32 GB of RAM, under Ubuntu 22.04. We used Visual Studio Code with Python 3.9.13. Please note that the PyTorch version we used was 2.1.0+cu121, i.e., a CUDA enabled one. The computer was equipped with an NVIDIA GeForce RTX 3050. 
+## 模块与资源
 
-============
+| 路径 | 用途 |
+| --- | --- |
+| `run_compact_spiral_experiment.py` | 完整采集、训练与 10 m / 20 m 测试入口 |
+| `generate_real_world_environment.py` | 从房屋、树木及纹理生成真实尺寸场景 |
+| `insect_utils/` | 相机、数据处理、模型、控制器与轨迹绘制 |
+| `tools/interactive_homing_multiview.py` | 手动外出和两阶段归巢演示 |
+| `config/experiments/` | 采样、训练、导航与演示协议 |
+| `assets/models/stage23_epoch484/` | 第 484 轮参考权重、导出模型及 SHA256 |
+| `assets/birds/quaternius_eagle/` | 演示用鸟模型及许可 |
+| `tests/` | 数据、几何、导航与演示回归测试 |
 
-## Installing NVIDIA Isaac Sim
+## 运行方式
 
-![IsaacSim 4.2.0](https://img.shields.io/badge/IsaacSim-4.2.0-brightgreen.svg)  
-[Isaac Sim 4.2.0](https://developer.nvidia.com/isaac-sim)
+以下命令在仓库根目录执行，使用 Isaac 容器自带的 Python 和依赖：
 
-![Ubuntu 22.04](https://img.shields.io/badge/Ubuntu-22.04LTS-brightgreen.svg)  
-[Ubuntu 22.04](https://releases.ubuntu.com/22.04/)
+```bash
+bash visual_simulator_docker/run_compact_spiral_on_disk.sh \
+  --run-dir runs/reproduce_compact20_01
+bash visual_simulator_docker/run_interactive_homing_demo.sh
+```
 
-To install **Isaac Sim** on Linux, download the [Omniverse AppImage here](https://install.launcher.omniverse.nvidia.com/installers/omniverse-launcher-linux.AppImage) or run the following command in the terminal:
+采集与训练输出保存至本目录 `runs/reproduce_compact20_01/`；
+演示输出保存至 `runs/interactive_demo/<时间戳>/`。
+`config/experiments/demo_release.json` 指定参考模型、相机、控制器和哈希。
+导出的 TorchScript 接收原始 RGB 张量，内部执行尺寸调整、圆形掩膜和米制输出换算。
 
-    wget https://install.launcher.omniverse.nvidia.com/installers/omniverse-launcher-linux.AppImage
+## 代码规范
 
-
-Configuring the environment variables
--------------------------------------
-
-NVIDIA provides Isaac Sim with its own Python interpreter along with some basic extensions such as numpy and pytorch. In
-order for the Pegasus Simulator to work, we require the user to use the same python environment when starting a simulation
-from python scripts. As such, we recommend setting up a few custom environment variables to make this process simpler.
-
-## Configuring the Environment Variables
-
-NVIDIA provides Isaac Sim with its own Python interpreter along with some basic extensions such as `numpy` and `pytorch`. For the simulator to work, the same Python environment provided by Isaac Sim must be used when starting simulations with Python scripts.
-
-### Steps to Configure Environment Variables
-
-Locate the **Isaac Sim installation folder**. Typically, on Linux, this folder can be found under:  
-`${HOME}/.local/share/ov/pkg/isaac_sim-*`  
-Replace `*` with the correct version number (e.g., `4.2.0`).
-
-Add the following lines to your `~/.bashrc` or `~/.zshrc` file:  
-`export ISAACSIM_PATH="${HOME}/.local/share/ov/pkg/isaac_sim-4.2.0"`  
-`alias ISAACSIM_PYTHON="${ISAACSIM_PATH}/python.sh"`  
-`alias ISAACSIM="${ISAACSIM_PATH}/isaac-sim.sh"`
-
-### Reference Terminology
-
-In this documentation:  
-- **ISAACSIM_PATH** refers to the Isaac Sim root directory.  
-- **ISAACSIM_PYTHON** refers to the provided Python interpreter.  
-- **ISAACSIM** refers to the simulator application.  
-
-## Running the experiments
-
-
-### Ratio learned homing area with respect to total flight area
-In order to run the path integration experiments with a Gaussian noise model, run the file `run_path_integration_experiments.py`. It will generate the results shown in Figure 2a and 2b, and simulate the noise settings used to model the robot, SVO-GTSAM, the bio-inspired odometry method of Stankiewicz and Webb, ants, and honeybees (printing drift and LHA properties in the terminal).
-
-### Visual homing experiments
-In order to replicate the aggregate results for the visual homing experiments, run the Python file: `run_ANN_homing_simulations.py`. The `config/server.json` file has a setting `server` that should be set to true when running the simulator headless. 
-
-The script will perform ten experiments, with the following steps:
-- Generate an environment.
-- Generate a training dataset in the environment.
-- Train the neural network on the training set.
-- Use the neural network for visual homing, starting at different angles and distances from the home location.
-
-After running the experiments, the results can be shown with the help of the `show_results_virtual_homing.py` script. Please adapt the `results_file` variable to the appropriate name before running. 
-
-Remark: These experiments may take ~10 hours to complete.
-
-### Snapshot-based navigation experiments
-Likewise, you can run the snapshot-based navigation experiments by running the script: `run_snapshot_simulations.py`. Results can be shown with the `show_results_snapshot_simulations.py` script. If you want to run snapshot in the same environments as the ANN, keep `generate_environments = False`.
-
-Remark: These experiments may take ~5 hours to complete.
-
-### Perfect-memory experiments
-You can run the perfect memory experimetns by running the script: `run_perfect_memory_homing_simulations.py`. Also this may take a long time.
-
-Plotting the results of all strategies in the same figure can be done with `compare_multirun_experiments.py`. Also there, please change the result file names. This result is shown in Figure 2d in the article. If you want to plot example trajectories for a given environment, run `show_results_virtual_homing.py` with `show_runs_specific_experiment=True` (Figure 2e).
-
-### Simple experiments  
-In order to run the experiments that use simple geometric environments for verifying the theoretical and simulation analysis, run the script `run_simple_experiments.py`. Set experiments to `True` or `False` in the `perform_experiments` variable. The experiments take ~15 minutes each.
-
-### MNIST experiments
-In the article, we run the different networks used for visual homing on the basic MNIST benchmark dataset. This gives insight into their representational capacity and the effectivity of their learning rules. To reproduce these experiments, 
-
-
+Python 使用四空格缩进；格式化与静态检查配置为 `pyproject.toml` 和 `.flake8`。
+运行仿真需使用 Isaac Sim 自带 Python；完整命令与检查步骤以复现指南为准。

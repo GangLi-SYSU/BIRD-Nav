@@ -1,58 +1,69 @@
-# Magnetic-guided path integration
+# 地磁辅助路径积分归巢
 
-This isolated CPU experiment extends `../determine_LHA_odometry.py`, the repository's
-Fig. 2 path-integration simulation. Existing visual experiments and original PI
-scripts remain unchanged. No network training, image rendering or GPU is required.
+本模块在二维运动学模型中比较理想地磁辅助与仅依赖陀螺仪航向积分的归巢效果。
+只需 NumPy 和 Matplotlib，无需 GPU、Isaac 或图像训练。
 
-## Model and assumptions
+## 模型与参数
 
-As in the original implementation, the controller integrates nominal displacement;
-actual movement differs by zero-mean Gaussian distance increments. Standard
-deviation is `sigma * sqrt(step_length_m)`, so sigma has units m/√m, not percent.
-This is an effective odometry/motion mismatch, not a full inertial mechanization.
-It excludes persistent scale bias, wind, acceleration integration, magnetic
-declination error and magnetic disturbances. The ideal compass gives heading in
-the navigation frame every step, with zero noise, delay or initial alignment error.
-It supplies direction, never position. The gyro-only control accumulates heading
-noise at 0.63°/√s, inherited from the original robot configuration.
+控制器累计名义位移，实际位移叠加零均值高斯距离误差。
+每一步误差标准差为 `sigma × sqrt(步长)`，`sigma` 的单位是 m/√m。
+地磁提供无噪声、无延迟的绝对航向；无地磁对照累积 0.63°/√s 的航向随机游走。
 
-`distance_m` is **nominal outbound endpoint displacement**. Straight outbound length
-is D. Dogleg headings 0°, 90°, 0°, −90° have lengths D/2 each, total 2D and endpoint
-(D, 0). Both return nominally D. Random global bearings vary independently per trial.
-Actual outbound radii can differ because of simulated error and are saved in CSV.
-Return control ends at **estimated home**, including a fractional final step;
-true endpoint distance ≤15 m is scored afterwards, never used to control stopping.
-Original code instead stops within one nominal step of estimated home.
-Gaussian signed negative increments are retained and counted, as in the original
-model; large sigmas are stress tests, not calibrated physical sensor specifications.
+`distance_m` 表示名义外出终点距起点的位移。直线外出航程等于该距离；
+折线外出由四段组成，总航程为该距离的两倍，返程名义长度等于该距离。
+每次实验使用随机全局方位，两种方法共享距离误差样本进行配对比较。
+归巢在内部估计到家时结束，再按真实终点是否位于起点 15 m 内评分。
 
-## Run and inspect
+该模型衡量有效里程误差与航向漂移，不包含风、磁偏角误差、磁干扰或真实惯性机械编排。
+理想地磁只提供方向；15 m 指标表示进入视觉归巢范围的比例。
 
-From this directory, using the existing disk environment:
+## 安装与批量实验
+
+在仓库根目录创建本盘 Python 环境，然后进入本目录：
 
 ```bash
-MPLCONFIGDIR=/tmp/bee-nav-pi /media/lg/lg-512/conda_envs/bird-nav/bin/python -B \
-  -m unittest discover -s tests -v
-MPLCONFIGDIR=/tmp/bee-nav-pi /media/lg/lg-512/conda_envs/bird-nav/bin/python -B \
-  run_experiment.py --config config.json --output runs/magnetic_01
+python3 -m venv .venv
+.venv/bin/python -m pip install numpy matplotlib
+cd path_integration_noise_simulation/magnetic_guidance
+../../.venv/bin/python run_experiment.py --config config.json --output runs/magnetic_01
 ```
 
-Dependencies: NumPy and Matplotlib (already installed). The runner refuses an
-existing output directory. `config.json` controls distances, sigma levels, speeds,
-time step, gyro coefficient, radius, seed and trial IDs. Extend a selected condition
-with a new config/output and `trial_start: 50`; do not duplicate IDs 0–49.
-Each combination has 50 independent trials; arms and sigma levels deliberately
-share random draws for paired comparisons. Different distances use different draws.
+默认配置测试 250、500、1,000、2,000、5,000 m 距离，
+噪声系数 0、0.1、0.25、0.5、1、2，直线和折线路线，每个组合每种方法各 50 次。
+配置还包含速度、时间步长、随机种子和试验编号；每个输出目录只能创建一次。
+`trial_start` 可指定新的试验编号区间，避免重复计算同一批样本。
 
-Outputs: protocol snapshot and input hashes, per-trial CSV, grouped CSV with Wilson
-95% intervals, all trajectories in NPZ (initial pose included), success heatmaps,
-endpoint scatter, Chinese report and completion receipt. NPZ keys are `magnetic`,
-`gyro_only`, `trial_ids`. Code uses four-space indentation, Black (100 columns) and
-Flake8; tests verify fractional steps, compass correction, paired controls,
-diffusion variance and stable trial indexing. Run `black --check .` and
-`flake8 --jobs=1 .` when those developer tools are available.
+## 复现 2,000 m、0.1 噪声、1,000 次实验
 
-The paper's Nature URL was inaccessible during this implementation. Provenance
-therefore refers to the local published-code implementation, not a newly verified
-reading of the paper text. Entering 15 m establishes only geometric eligibility
-for the visual stage, not end-to-end navigation success.
+先完成上面的批量实验，生成 `runs/magnetic_01/` 中的基础数据，再运行：
+
+```bash
+../../.venv/bin/python extend_2000m.py --output runs/reproduce_2000m_1000
+```
+
+配置位于 `config_2000m_1000.json`，固定随机种子 20261106。
+脚本读取基础数据、验证试验编号和参数一致性，完成每组 1,000 次实验并导出全量统计。
+名义外出终点距离 2,000 m、折线航程 4,000 m、返程 2,000 m，真实终点 15 m 内视为成功。
+
+| 方法 | 成功次数 | 成功率 | 平均终点误差 |
+| --- | ---: | ---: | ---: |
+| 理想地磁辅助 | 977 / 1,000 | 97.7% | 6.677 m |
+| 仅陀螺仪航向积分 | 2 / 1,000 | 0.2% | 597.631 m |
+
+两组成功率的 Wilson 95% 区间分别为 96.57%–98.46% 和 0.05%–0.73%。
+该结果来自指定误差模型，与视觉阶段的成功率分别报告。
+
+## 输出与验证
+
+输出包括配置快照、源文件哈希、逐次结果 `trials.csv`、汇总 `summary.csv`、
+轨迹 NPZ、终点分布图和中文结果报告。1,000 次实验还输出参照论文图 2a 布局的归巢分布图。
+输出目录通过 `.gitignore` 排除，可由上述命令重新生成。
+
+在本目录运行测试：
+
+```bash
+../../.venv/bin/python -m unittest discover -s tests -v
+```
+
+测试覆盖分数末步、无噪声归巢、配对比较、扩散方差和可扩展的试验编号。
+代码使用四空格缩进，Black 格式化和 Flake8 静态检查配置位于本目录。
